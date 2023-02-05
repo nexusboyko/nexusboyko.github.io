@@ -15,274 +15,314 @@
     />
   </head>
 
-  <body>
-    <header class="row">
-      <div class="col-auto p-0">
-        <h1>Alexander Boyko</h1>
-        <nav>
-          <ul>
-            <li class="me-2"><a href="#projects">Projects</a></li>
-            <li class="me-2"><a href="#skills">Skills</a></li>
-            <li class="me-2"><a href="#education">Education</a></li>
-            <li class="">
-              <a
-                href="Alexander Boyko - Resume (Dec 2022).pdf"
-                target="_blank"
-                title="Resume"
-                >Resume
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div class="col-auto p-0">
-        <div id="contacts">
-          <ul class="d-flex flex-wrap">
-            <li>
-              <a
-                href="https://www.linkedin.com/in/aboyko2003/"
-                target="_blank"
-                title="LinkedIn"
-              >
-                <iconify-icon
-                  icon="logos:linkedin-icon"
-                  width="1.5rem"
-                  class="p-1"
-                ></iconify-icon>
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://github.com/nexusboyko"
-                target="_blank"
-                title="Github"
-              >
-                <iconify-icon
-                  icon="logos:github-icon"
-                  width="1.5rem"
-                  class="p-1"
-                ></iconify-icon>
-              </a>
-            </li>
-            <li>
-              <a href="mailto:alexboyko@outlook.com" title="Outlook">
-                <iconify-icon
-                  icon="vscode-icons:file-type-outlook"
-                  width="1.5rem"
-                  class="p-1"
-                ></iconify-icon>
-              </a>
-            </li>
-          </ul>
+  <body class="container p-5">
+    <div id="contacts">
+        <div
+          class="row justify-content-between align-items-center border mb-3"
+        >
+          <h5 class="col-auto m-0">contacts</h5>
+          <div class="col-auto d-flex align-items-center p-0">
+            <a
+              href="https://github.com/nexusboyko"
+              target="_blank"
+              title="Github"
+              class="border-start p-2"
+            >
+              <iconify-icon
+                icon="logos:github-icon"
+                width="1.5rem"
+                class="p-1"
+              ></iconify-icon>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/aboyko2003/"
+              target="_blank"
+              title="LinkedIn"
+              class="border-start p-2"
+            >
+              <iconify-icon
+                icon="logos:linkedin-icon"
+                width="1.5rem"
+                class="p-1"
+              ></iconify-icon>
+            </a>
+            <a
+              href="mailto:alexboyko@outlook.com"
+              title="Outlook"
+              class="border-start p-2"
+            >
+              <iconify-icon
+                icon="vscode-icons:file-type-outlook"
+                width="1.5rem"
+                class="p-1"
+              ></iconify-icon>
+            </a>
+          </div>
         </div>
       </div>
-    </header> 
-
-    <main>
-      <!-- hero -->
-      <section id="hero">
-        <div class="row">
-          <div
-            id="hero-img"
-            class="col-auto"
-          >
+    <header class="row border mb-5">
+      <div class="col-lg-8 border-end">
+        <div
+          class="row border-bottom d-flex justify-content-center align-items-center p-0"
+        >
+          <div class="col-auto p-0">
             <img
               src="images/profile.jpeg"
               alt="Profile image"
-              class="rounded-circle shadow-sm"
+              class="border-end"
+              height="250px"
+              width="auto"
             />
           </div>
-          <div id="hero-desc" class="col-md-8">
+          <div class="col">
+            <h2 class="">Alexander Boyko</h2>
             <p class="">
-              Computer science undergraduate at the
-              <a href="#education">University of California</a>
+              CS undergrad at
+              <a href="https://www.ucdavis.edu" target="_blank">UC Davis</a>
               with a passion for web development and design. Either studying,
               leetcoding, or learning more about the web.
             </p>
           </div>
         </div>
-      </section>
-
-      <!-- projects -->
-      <section id="projects">
-        <h2>My Projects</h2>
-        <div id="project-it" class="row mb-4">
+      </div>
+      <nav class="col-lg-4 p-0">
+        <a href="/Alexander Boyko - Resume (Feb 2023).pdf" target="_blank">
           <div
-            class="col-lg-6 d-flex flex-wrap justify-content-center align-items-center"
+            class="row-cols-auto border-bottom d-flex justify-content-center align-items-center py-4"
           >
+            resume
+          </div>
+        </a>
+        <a href="#projects">
+          <div
+            class="row-cols-auto border-bottom d-flex justify-content-center align-items-center py-4"
+          >
+            projects
+          </div>
+        </a>
+        <a href="#skills">
+          <div
+            class="row-cols-auto border-bottom d-flex justify-content-center align-items-center py-4"
+          >
+            skills
+          </div>
+        </a>
+        <a href="#education">
+          <div
+            class="row-cols-auto border-bottom d-flex justify-content-center align-items-center py-4"
+          >
+            education
+          </div>
+        </a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="hero"></section>
+
+      <section id="projects" class="mb-5">
+        <div class="row border-top border-bottom border-start border-end">
+          <div class="col p-0 border-end">
             <img
-              src="images/projectit/project-it-screenshot.png"
-              alt=""
-              class="img img-fluid img-thumbnail"
+              src="/images/myself-home.png"
+              alt="image"
+              class="img img-fluid"
             />
           </div>
-          <div class="col-lg-6 d-flex flex-wrap align-items-center p-3">
-            <h5>Project It</h5>
-            <p>
-              WIP Next.js web app I began in 2021. Based on an idea for a
-              platform that could help students, like myself, find projects and
-              groupwork that could spawn larger collaborations and possibly
-              community-driven development.
+          <div class="col p-0">
+            <h5 class="border-bottom p-2 m-0">
+              <strong>myself</strong>
+              <a
+                href="https://github.com/nexusboyko/myself"
+                target="_blank"
+                type="button"
+              >
+                <i class="bi bi-github"></i>
+              </a>
+            </h5>
+            <p class="p-2">
+              MERN-stack web application that provides a single space for
+              personal-development through custom physical/mental health
+              activities centered around the individual.
             </p>
-            <button
-              type="button"
-              class="btn btn-outline-primary btn-sm mt-2"
-              disabled
-            >
-              <strong>work in progress <i class="bi bi-pencil"></i></strong>
-            </button>
           </div>
         </div>
-
-        <div id="curated-list" class="row mb-4">
-          <div
-            class="col-lg-6 d-flex flex-wrap justify-content-center align-items-center"
-          >
+        <div class="row border-bottom border-start border-end">
+          <div class="col p-0 border-end">
             <img
-              src="images/curatedlist/curated-list-screenshot.png"
-              alt=""
-              class="img img-fluid img-thumbnail"
+              src="/images/curatedlist/curated-list-screenshot.png"
+              alt="image"
+              class="img img-fluid"
             />
           </div>
-          <div class="col-lg-6 d-flex flex-wrap align-items-center p-3">
-            <h5>Curated List</h5>
-            <p>
-              Started in the summer of 2020, and ongoing. Helped co-create,
-              design, and develop a web app that serves as an all-in-one,
+          <div class="col p-0">
+            <h5 class="border-bottom p-2 m-0">
+              <strong>curatedlist.io</strong>
+              <a href="https://curatedlist.io/" target="_blank" type="button">
+                <i class="bi bi-link-45deg"></i>
+              </a>
+            </h5>
+            <p class="p-2">
+              Started in the summer of 2020. Co-created and continue to help
+              design and develop a web app that serves as an all-in-one,
               multipurpose collaboration space that allows users to create,
               share, and track multimedia learning materials.
             </p>
-            <a
-              href="https://curatedlist.io/"
-              target="_blank"
-              type="button"
-              class="btn btn-outline-primary btn-sm mt-2"
-            >
-              <strong
-                >curatedlist.io <i class="bi bi-box-arrow-up-right"></i
-              ></strong>
-            </a>
           </div>
         </div>
       </section>
 
-      <!-- skills -->
       <section id="skills">
-        <h2>Skills & Tools</h2>
-        <h5>Experienced in...</h5>
-        <ul>
-          <li>
+        <div
+          class="row border-top border-bottom border-start border-end justify-content-start mb-3"
+        >
+          <h5 class="border-bottom p-2 m-0">Experienced in...</h5>
+          <div
+            class="col d-flex flex-column justify-content-center align-items-center p-4"
+          >
             <iconify-icon icon="logos:c-plusplus" height="5rem"></iconify-icon>
             <span>C++</span>
-          </li>
-          <li>
+          </div>
+          <div
+            class="col d-flex flex-column justify-content-center align-items-center p-4"
+          >
             <iconify-icon
               icon="vscode-icons:file-type-html"
               height="5rem"
             ></iconify-icon>
             <span>HTML</span>
-          </li>
-          <li>
+          </div>
+          <div
+            class="col d-flex flex-column justify-content-center align-items-center p-4"
+          >
             <iconify-icon
               icon="vscode-icons:file-type-css"
               height="5rem"
             ></iconify-icon>
             <span>CSS</span>
-          </li>
-          <li>
+          </div>
+          <div
+            class="col d-flex flex-column justify-content-center align-items-center p-4"
+          >
             <iconify-icon icon="logos:bootstrap" width="5rem"></iconify-icon>
             <span>Bootstrap</span>
-          </li>
-          <li>
+          </div>
+          <div
+            class="col d-flex flex-column justify-content-center align-items-center p-4"
+          >
             <iconify-icon
               icon="vscode-icons:file-type-vscode"
               height="5rem"
             ></iconify-icon>
             <span>VS Code</span>
-          </li>
-          <li>
+          </div>
+          <div
+            class="col d-flex flex-column justify-content-center align-items-center p-4"
+          >
             <iconify-icon icon="logos:git-icon" width="5rem"></iconify-icon>
             <span>Git</span>
-          </li>
-          <li>
+          </div>
+          <div
+            class="col d-flex flex-column justify-content-center align-items-center p-4"
+          >
             <iconify-icon icon="logos:figma" height="5rem"></iconify-icon>
             <span>Figma</span>
-          </li>
-          <li>
+          </div>
+          <div
+            class="col d-flex flex-column justify-content-center align-items-center p-4"
+          >
             <iconify-icon
               icon="logos:adobe-photoshop"
               height="5rem"
             ></iconify-icon>
             <span>Photoshop</span>
-          </li>
-          <li>
+          </div>
+          <div
+            class="col d-flex flex-column justify-content-center align-items-center p-4"
+          >
             <iconify-icon
               icon="simple-icons:microsoftoffice"
               style="color: #dc3e15"
               height="5rem"
             ></iconify-icon>
             <span>MS Office</span>
-          </li>
-        </ul>
-        <h5>Currently learning...</h5>
-        <ul>
-          <li>
-            <iconify-icon icon="logos:javascript" width="5rem"></iconify-icon>
-            <span>JavaScript</span>
-          </li>
-          <li>
-            <iconify-icon icon="logos:react" width="5rem"></iconify-icon>
-            <span>React</span>
-          </li>
-          <li>
-            <iconify-icon icon="logos:nextjs-icon" width="5rem"></iconify-icon>
-            <span>NextJS</span>
-          </li>
-          <li>
-            <iconify-icon icon="logos:nodejs-icon" width="5rem"></iconify-icon>
-            <span>NodeJS</span>
-          </li>
-          <li>
-            <iconify-icon icon="logos:redis" width="5rem"></iconify-icon>
-            <span>Redis</span>
-          </li>
-        </ul>
-      </section>
-
-      <!-- education -->
-      <section id="education">
-        <h2>Education</h2>
-        <h5>University of California, Davis (exp. 2024)</h5>
-        <div class="row my-4">
-          <div class="col-auto">
-            <a href="https://www.ucdavis.edu/" target="_blank">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/5/5c/UC_Davis_wordmark.png"
-                alt="UC Davis logo"
-                height="80rem"
-              />
-            </a>
-          </div>
-          <div class="col-auto d-flex flex-column justify-content-center">
-            <p><em>Bachelor's of Science</em></p>
-            <p>Computer Science</p>
-            <p>GPA - <span>3.9</span></p>
           </div>
         </div>
-        <div id="coursework" class="row">
-          <h5><em>Notable coursework</em></h5>
-          <ul class="row">
-            <div class="col-auto">
-              <li>Data Structures & Algorithms</li>
-              <li>Object-Oriented Programming in C++</li>
-              <li>Linear Algebra</li>
+
+        <div class="row border-top border-bottom border-start border-end mb-5">
+          <h5 class="col-12 border-bottom p-2 m-0">Currently learning...</h5>
+          <div
+            class="col d-flex flex-column justify-content-center align-items-center p-4"
+          >
+            <iconify-icon icon="logos:javascript" width="5rem"></iconify-icon>
+            <span>JavaScript</span>
+          </div>
+          <div
+            class="col d-flex flex-column justify-content-center align-items-center p-4"
+          >
+            <iconify-icon icon="logos:react" width="5rem"></iconify-icon>
+            <span>React</span>
+          </div>
+          <div
+            class="col d-flex flex-column justify-content-center align-items-center p-4"
+          >
+            <iconify-icon
+              icon="logos:mongodb-icon"
+              height="5rem"
+            ></iconify-icon>
+            <span>MongoDB</span>
+          </div>
+          <div
+            class="col d-flex flex-column justify-content-center align-items-center p-4"
+          >
+            <iconify-icon
+              icon="simple-icons:express"
+              width="5rem"
+            ></iconify-icon>
+            <span>Express</span>
+          </div>
+          <div
+            class="col d-flex flex-column justify-content-center align-items-center p-4"
+          >
+            <iconify-icon icon="logos:nodejs-icon" width="5rem"></iconify-icon>
+            <span>NodeJS</span>
+          </div>
+          <div
+            class="col d-flex flex-column justify-content-center align-items-center p-4"
+          >
+            <iconify-icon icon="logos:redis" width="5rem"></iconify-icon>
+            <span>Redis</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="education">
+        <div class="row border-top border-end border-start">
+          <div class="col p-0">
+            <!-- <h5 class="border-bottom m-0 p-2">
+              University of California, Davis (exp. 2024)
+            </h5> -->
+            <a href="https://www.ucdavis.edu" target="_blank">
+              <h5 class="row-cols-auto border-bottom m-0 p-2">
+                University of California, Davis (exp. 2024)
+              </h5>
+            </a>
+            <div class="row-cols-auto border-bottom p-2">
+              <em>Bachelor's of Science</em>
             </div>
-            <div class="col-auto">
-              <li>Discrete Math</li>
-              <li>Vector & Multivariable Calculus</li>
-              <li>Mechanical Physics</li>
+            <div class="row-cols-auto border-bottom p-2"><strong>Computer Science</strong></div>
+            <div class="row-cols-auto border-bottom p-2"><strong>GPA: 3.94</strong></div>
+          </div>
+          <div class="col p-2 border-start border-bottom">
+            <div class="row">
+              <p>Data Structures & Algorithms</p>
+              <p>Object-Oriented Programming in C++</p>
+              <p>Linear Algebra</p>
+              <p>Discrete Math</p>
+              <p>Vector & Multivariable Calculus</p>
+              <p>Classical Physics</p>
             </div>
-          </ul>
+          </div>
         </div>
       </section>
     </main>
