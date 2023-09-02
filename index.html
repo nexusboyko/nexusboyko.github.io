@@ -1,370 +1,288 @@
-<!DOCTYPE html html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Alexander Boyko</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="shortcut icon" href="" type="image/x-icon" />
-    <link rel="stylesheet" href="css/global.min.css" />
-    <!-- <link
-      rel="stylesheet"
-      href="node_modules/bootstrap-icons/font/bootstrap-icons.css"
-    /> -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
-    />
-  </head>
+  <title>Alex Boyko</title>
 
-  <body class="container p-5">
-    <div id="contacts">
-      <div class="row justify-content-between align-items-center border mb-3">
-        <h5 class="col-auto m-0">contacts</h5>
-        <div class="col-auto d-flex align-items-center p-0">
-          <a
-            href="https://github.com/nexusboyko"
-            target="_blank"
-            title="Github"
-            class="border-start p-2"
-          >
-            <iconify-icon
-              icon="logos:github-icon"
-              width="1.5rem"
-              class="p-1"
-            ></iconify-icon>
-          </a>
-          <a
-            href="https://www.linkedin.com/in/aboyko2003/"
-            target="_blank"
-            title="LinkedIn"
-            class="border-start p-2"
-          >
-            <iconify-icon
-              icon="logos:linkedin-icon"
-              width="1.5rem"
-              class="p-1"
-            ></iconify-icon>
-          </a>
-          <a
-            href="mailto:alexboyko@outlook.com"
-            title="Outlook"
-            class="border-start p-2"
-          >
-            <iconify-icon
-              icon="vscode-icons:file-type-outlook"
-              width="1.5rem"
-              class="p-1"
-            ></iconify-icon>
-          </a>
-        </div>
+  <link rel="shortcut icon" href="" type="image/x-icon" />
+  <link rel="stylesheet" href="index.css" />
+
+
+</head>
+
+<body>
+  <main>
+    <section id="hero" class="flex flex-wrap justify-center items-center py-8">
+      <div class="w-56 me-4">
+        <img src="./images/profile.jpeg" class="rounded-lg" alt="profile picture">
       </div>
-    </div>
-    <header class="row border mb-5">
-      <div class="col-lg-8 border-end">
-        <div
-          class="row border-bottom d-flex justify-content-center align-items-center p-0"
-        >
-          <div class="col-auto p-0">
-            <img
-              src="images/profile.jpeg"
-              alt="Profile image"
-              class="border-end"
-              height="250px"
-              width="auto"
-            />
-          </div>
-          <div class="col">
-            <h2 class="">Alexander Boyko</h2>
-            <p class="">
-              CS undergrad at
-              <a href="https://www.ucdavis.edu" target="_blank">UC Davis</a>
-              with a passion for web development and design. Either studying,
-              leetcoding, or learning more about the web.
-            </p>
-          </div>
-        </div>
-      </div>
-      <nav class="col-lg-4 p-0">
-        <a href="/Alexander Boyko - Resume (Feb 2023).pdf" target="_blank">
-          <div
-            class="row-cols-auto border-bottom d-flex justify-content-center align-items-center py-4"
-          >
-            resume
-          </div>
-        </a>
-        <a href="#projects">
-          <div
-            class="row-cols-auto border-bottom d-flex justify-content-center align-items-center py-4"
-          >
-            projects
-          </div>
-        </a>
-        <a href="#skills">
-          <div
-            class="row-cols-auto border-bottom d-flex justify-content-center align-items-center py-4"
-          >
-            skills
-          </div>
-        </a>
-        <a href="#education">
-          <div
-            class="row-cols-auto d-flex justify-content-center align-items-center py-4"
-          >
-            education
-          </div>
-        </a>
-      </nav>
-    </header>
-
-    <main>
-      <section id="hero"></section>
-
-      <section id="projects" class="mb-5">
-        <div class="row border-top border-bottom border-start border-end">
-          <div class="col-md-6 p-0 border-end">
-            <img
-              src="/images/myself-home.png"
-              alt="image"
-              class="img img-fluid"
-            />
-          </div>
-          <div class="col-md-6 p-0">
-            <h5 class="border-bottom p-2 m-0">
-              <strong>myself</strong>
-              <a
-                href="https://github.com/nexusboyko/myself"
-                target="_blank"
-                type="button"
-              >
-                <i class="bi bi-github"></i>
-              </a>
-            </h5>
-            <p class="p-2">
-              MERN-stack web application that provides a single space for
-              personal-development through custom
-              physical and mental health activities centered around the
-              individual—meditation, stretching, saving text
-              quotes, etc.
-            </p>
-            <p class="p-2">
-              I've often found myself doing many small wellness "activities"
-              throughout each day, but it was difficult to stay consistent
-              unless I had some way to effortlessly do all of these activities
-              from one place.<br />
-            </p>
-            <p class="p-2">
-              My long-term vision for this app includes the ability for users to
-              create custom activity modules with their own custom features,
-              daily reminders/other useful notificaitons, integration with
-              external apps (i.e. health information, note transferring).
-            </p>
-            <p style="font-family: var(--mono)" class="p-2 mt-1">
-              <small>React, MongoDB, Express, Node.js, Bootstrap, Figma</small>
-            </p>
-          </div>
-        </div>
-        <div class="row border-bottom border-start border-end">
-          <div class="col-md-6 p-0 border-end">
-            <img
-              src="/images/curatedlist/curated-list-screenshot.png"
-              alt="image"
-              class="img img-fluid"
-            />
-          </div>
-          <div class="col-md-6 p-0">
-            <h5 class="border-bottom p-2 m-0">
-              <strong>curatedlist.io</strong>
-              <a href="https://curatedlist.io/" target="_blank" type="button">
-                <i class="bi bi-link-45deg"></i>
-              </a>
-            </h5>
-            <p class="p-2">Started in the summer of 2020.</p>
-            <p class="p-2">
-              Co-created and continue to help design/develop a web application
-              that serves as an all-in-one, multipurpose collaboration space
-              that allows users to create, share, and track multimedia learning
-              materials.
-            </p>
-            <p style="font-family: var(--mono)" class="p-2 mt-1">
-              <small>React, Redis, Redux, Material UI</small>
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section id="skills">
-        <div
-          class="row border-top border-bottom border-start border-end justify-content-start mb-3"
-        >
-          <h5 class="border-bottom p-2 m-0">Experienced in...</h5>
-          <div
-            class="col d-flex flex-column justify-content-center align-items-center p-4"
-          >
-            <iconify-icon icon="logos:c-plusplus" height="5rem"></iconify-icon>
-            <span>C++</span>
-          </div>
-          <div
-            class="col d-flex flex-column justify-content-center align-items-center p-4"
-          >
-            <iconify-icon
-              icon="vscode-icons:file-type-html"
-              height="5rem"
-            ></iconify-icon>
-            <span>HTML</span>
-          </div>
-          <div
-            class="col d-flex flex-column justify-content-center align-items-center p-4"
-          >
-            <iconify-icon
-              icon="vscode-icons:file-type-css"
-              height="5rem"
-            ></iconify-icon>
-            <span>CSS</span>
-          </div>
-          <div
-            class="col d-flex flex-column justify-content-center align-items-center p-4"
-          >
-            <iconify-icon icon="logos:bootstrap" width="5rem"></iconify-icon>
-            <span>Bootstrap</span>
-          </div>
-          <div
-            class="col d-flex flex-column justify-content-center align-items-center p-4"
-          >
-            <iconify-icon
-              icon="vscode-icons:file-type-vscode"
-              height="5rem"
-            ></iconify-icon>
-            <span>VS Code</span>
-          </div>
-          <div
-            class="col d-flex flex-column justify-content-center align-items-center p-4"
-          >
-            <iconify-icon icon="logos:git-icon" width="5rem"></iconify-icon>
-            <span>Git</span>
-          </div>
-          <div
-            class="col d-flex flex-column justify-content-center align-items-center p-4"
-          >
-            <iconify-icon icon="logos:figma" height="5rem"></iconify-icon>
-            <span>Figma</span>
-          </div>
-          <div
-            class="col d-flex flex-column justify-content-center align-items-center p-4"
-          >
-            <iconify-icon
-              icon="logos:adobe-photoshop"
-              height="5rem"
-            ></iconify-icon>
-            <span>Photoshop</span>
-          </div>
-          <div
-            class="col d-flex flex-column justify-content-center align-items-center p-4"
-          >
-            <iconify-icon
-              icon="simple-icons:microsoftoffice"
-              style="color: #dc3e15"
-              height="5rem"
-            ></iconify-icon>
-            <span>MS Office</span>
-          </div>
-        </div>
-
-        <div class="row border-top border-bottom border-start border-end mb-5">
-          <h5 class="col-12 border-bottom p-2 m-0">Currently learning...</h5>
-          <div
-            class="col d-flex flex-column justify-content-center align-items-center p-4"
-          >
-            <iconify-icon icon="logos:javascript" width="5rem"></iconify-icon>
-            <span>JavaScript</span>
-          </div>
-          <div
-            class="col d-flex flex-column justify-content-center align-items-center p-4"
-          >
-            <iconify-icon icon="logos:react" width="5rem"></iconify-icon>
-            <span>React</span>
-          </div>
-          <div
-            class="col d-flex flex-column justify-content-center align-items-center p-4"
-          >
-            <iconify-icon
-              icon="logos:mongodb-icon"
-              height="5rem"
-            ></iconify-icon>
-            <span>MongoDB</span>
-          </div>
-          <div
-            class="col d-flex flex-column justify-content-center align-items-center p-4"
-          >
-            <iconify-icon
-              icon="simple-icons:express"
-              width="5rem"
-            ></iconify-icon>
-            <span>Express</span>
-          </div>
-          <div
-            class="col d-flex flex-column justify-content-center align-items-center p-4"
-          >
-            <iconify-icon icon="logos:nodejs-icon" width="5rem"></iconify-icon>
-            <span>NodeJS</span>
-          </div>
-          <div
-            class="col d-flex flex-column justify-content-center align-items-center p-4"
-          >
-            <iconify-icon icon="logos:redis" width="5rem"></iconify-icon>
-            <span>Redis</span>
-          </div>
-        </div>
-      </section>
-
-      <section id="education">
-        <div class="row border-top border-end border-start">
-          <div class="col p-0">
-            <!-- <h5 class="border-bottom m-0 p-2">
-              University of California, Davis (exp. 2024)
-            </h5> -->
-            <a href="https://www.ucdavis.edu" target="_blank">
-              <h5 class="row-cols-auto border-bottom m-0 p-2">
-                University of California, Davis (exp. 2024)
-              </h5>
+      <div class="text-center md:text-left">
+        <h1 class="text-3xl mb-2 font-mono">Alex Boyko</h1>
+        <p class="my-1">Junior CS student @
+          <span class="font-semibold">UW, Seattle.</span> <br /> Passionate about software development and design.
+        </p>
+        <div class="flex items-center">
+          <p id="resume" class="my-2 font-semibold">Check out my resume.</p>
+          <div class="font-mono badge badge-neutral text-white hover:badge-ghost me-1 font-normal text-base p-3 ms-2">
+            <a href="docs/Alexander_Boyko_Resume_Sep2023.pdf" target="_blank" title="LinkedIn"
+              class="flex items-center">
+              <iconify-icon icon="mi:document" class="me-1"></iconify-icon>Resume
             </a>
-            <div class="row-cols-auto border-bottom p-2">
-              <em>Bachelor's of Science</em>
-            </div>
-            <div class="row-cols-auto border-bottom p-2">
-              <strong>Computer Science</strong>
-            </div>
-            <div class="row-cols-auto border-bottom p-2">
-              <strong>GPA: 3.94</strong>
-            </div>
-          </div>
-          <div class="col p-2 border-start border-bottom">
-            <div class="row">
-              <p>Data Structures & Algorithms</p>
-              <p>Object-Oriented Programming in C++</p>
-              <p>Linear Algebra</p>
-              <p>Discrete Math</p>
-              <p>Vector & Multivariable Calculus</p>
-              <p>Classical Physics</p>
-            </div>
           </div>
         </div>
-      </section>
-    </main>
+        <div id="contact" class="my-1">
+          <p class="font-semibold">Get in touch or view my work.</p>
+          <ul class="py-1">
+            <li class="font-mono badge badge-neutral text-white hover:badge-ghost me-1 font-normal text-base p-3">
+              <a href="https://www.linkedin.com/in/aboyko2003/" target="_blank" title="LinkedIn"
+                class="flex items-center">
+                <iconify-icon icon="mdi:linkedin" class="me-1"></iconify-icon>LinkedIn
+              </a>
+            </li>
+            <li class="font-mono badge badge-neutral text-white hover:badge-ghost m-1 font-normal text-base p-3">
+              <a href="mailto:alexboyko@outlook.com" title="Outlook" class="flex items-center">
+                <iconify-icon icon="mdi:outlook" class="me-1"></iconify-icon>Outlook
+              </a>
+            </li>
+            <li class="font-mono badge badge-neutral text-white hover:badge-ghost ms-1 font-normal text-base p-3">
+              <a href="https://github.com/nexusboyko" target="_blank" title="Github" class="flex items-center">
+                <iconify-icon icon="mdi:github" class="me-1"></iconify-icon>Github
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div>
+      </div>
+    </section>
 
-    <!-- javascript -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
-    <script type="text/javascript" src="/js/index.js"></script>
-    <script
-      type="text/javascript"
-      src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"
-    ></script>
-  </body>
+    <h1 class="text-center text-2xl font-mono">Professional Experience</h1>
+    <section id="projects" class="grid grid-cols-1 sm:grid-cols-2 my-8 gap-3">
+      <div class="card bg-base-200 shadow-lg rounded-md">
+        <div class="card-body">
+          <h2 class="card-title font-bold">Software Development Intern
+          </h2>
+          <div class="badge badge-neutral">Jun 2023 - Aug 2023</div>
+          <h1 class="font-mono text-xl">Akvelon, Inc.</h1>
+          <p class="mb-2">End-to-end frontend development in collaboration with backend implementation.
+            <br> Active role in moving the team through a full development cycle of a new product: story-boarding and
+            capturing project
+            requirements; goal setting and tracking daily progress; collaborating in a shared source code repo;
+            debugging and
+            reviewing code changes; deploying to production and collecting user feedback.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="card bg-base-200 shadow-lg rounded-md">
+        <div class="card-body">
+          <h2 class="card-title font-bold">Swim Instructor
+          </h2>
+          <div class="badge badge-neutral">Aug 2018 - Aug 2023</div>
+          <h1 class="font-mono text-xl">WAVE Aquatics</h1>
+          <p class="mb-2">
+            Five years of experience in teaching water skills and safety, team communication skills, program management,
+            employee
+            training, basic administrative tasks, and customer services.
+          </p>
+        </div>
+      </div>
+
+    </section>
+
+    <h1 class="text-center text-2xl font-mono">Projects</h1>
+    <section id="projects" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 my-8 gap-3">
+      <div class="card bg-base-200 shadow-lg rounded-md">
+        <div class="card-body">
+          <h2 class="card-title font-bold">Study Assistant
+            <a href="https://study-assistant.akvelon.net/">
+              <iconify-icon icon="ph:link-bold"></iconify-icon>
+            </a>
+          </h2>
+          <p class="mb-2">Designed, built, and deployed a real-time chat application which provided an interactive study
+            assistant powered by
+            OpenAI. <br> Led end-to-end frontend development, worked with partner team on backend implementation.
+            Released
+            and made
+            publicly available for high schools and universities.
+          </p>
+          <div class="card-actions justify-end font-mono">
+            <div class="badge badge-outline select-none">React</div>
+            <div class="badge badge-outline select-none">Redux</div>
+            <div class="badge badge-outline select-none">TypeScript</div>
+            <div class="badge badge-outline select-none">FastAPI</div>
+            <div class="badge badge-outline select-none">OpenAI</div>
+          </div>
+        </div>
+        <figure>
+          <img src="images/studyassistant/study_assistant_1.png" alt="Dashboard" />
+        </figure>
+      </div>
+
+      <div class="card bg-base-200 shadow-lg rounded-md">
+        <div class="card-body">
+          <h2 class="card-title font-bold">curatedlist.io
+            <a href="https://curatedlist.io/">
+              <iconify-icon icon="ph:link-bold"></iconify-icon>
+            </a>
+          </h2>
+          <p class="mb-2">Started in the summer of 2020.
+            <br>
+            Co-created and continue to help design/develop a web application that serves as an all-in-one, multipurpose
+            collaboration space that allows users to create, share, and track multimedia learning materials.
+          </p>
+          <div class="card-actions justify-end font-mono">
+            <div class="badge badge-outline select-none">React</div>
+            <div class="badge badge-outline select-none">Redux</div>
+            <div class="badge badge-outline select-none">Redis</div>
+            <div class="badge badge-outline select-none">Material UI</div>
+          </div>
+        </div>
+        <figure>
+          <img src="images/curatedlist.io/curated-list-screenshot.png" alt="Homepage" />
+        </figure>
+      </div>
+
+
+      <div class="card bg-base-200 shadow-lg rounded-md">
+        <div class="card-body">
+          <h2 class="card-title font-bold">Kits Cubed App
+            <a href="https://github.com/payday2021/Kits-Cubed-App-Development">
+              <iconify-icon icon="mdi:github"></iconify-icon>
+            </a>
+          </h2>
+          <p class="mb-2">
+            Co-developing a mobile app for a local STEM youth program in Oakland, CA, that will provide easier
+            accessibility to science kits, events, and educational content through the use of smartphones
+          </p>
+          <div class="card-actions justify-end font-mono">
+            <div class="badge badge-outline select-none">React Native</div>
+            <div class="badge badge-outline select-none">Redux</div>
+            <div class="badge badge-outline select-none">NodeJS</div>
+            <div class="badge badge-outline select-none">SQLite</div>
+          </div>
+        </div>
+    </section>
+
+    <section class="grid grid-cols-1 lg:grid-cols-2">
+      <div>
+        <h1 class="text-center text-2xl font-mono">Skills & Tools</h1>
+        <section id="skills" class="flex justify-center">
+          <div class="icon-list grid grid-cols-4 sm:grid-cols-5 gap-8 grid-flow-row-dense m-8">
+            <div class="flex flex-col items-center p-1">
+              <iconify-icon class="mb-2" icon="logos:react" height="80" width="80"
+                style="filter: drop-shadow(0 0 3px #00D8FF)"></iconify-icon>
+              <small>React</small>
+            </div>
+            <div class="flex flex-col items-center p-1">
+              <iconify-icon class="mb-2" icon="logos:redux" height="80" width="80"
+                style="filter: drop-shadow(0 0 3px #764ABC)"></iconify-icon>
+              <small>Redux</small>
+            </div>
+            <div class="flex flex-col items-center p-1">
+              <iconify-icon class="mb-2" icon="devicon:typescript" height="80" width="80"
+                style="filter: drop-shadow(0 0 3px #007ACC)"></iconify-icon>
+              <small>TypeScript</small>
+            </div>
+            <div class="flex flex-col items-center p-1">
+              <iconify-icon class="mb-2" icon="vscode-icons:file-type-tailwind" height="80" width="80"
+                style="filter: drop-shadow(0 0 3px #44A8B3);"></iconify-icon>
+              <small>Tailwind</small>
+            </div>
+            <div class="flex flex-col items-center p-1">
+              <iconify-icon class="mb-2" icon="logos:gitlab" height="80" width="80"
+                style="filter: drop-shadow(0 0 3px #FC6D26)"></iconify-icon>
+              <small>GitLab</small>
+            </div>
+            <div class="flex flex-col items-center p-1">
+              <iconify-icon class="mb-2" icon="logos:git-icon" height="80" width="80"
+                style="filter: drop-shadow(0 0 3px #F34F29)"></iconify-icon>
+              <small>Git</small>
+            </div>
+            <div class="flex flex-col items-center p-1">
+              <iconify-icon class="mb-2" icon="devicon:fastapi" height="80" width="80"
+                style="filter: drop-shadow(0 0 3px #049688)"></iconify-icon>
+              <small>FastAPI</small>
+            </div>
+            <div class="flex flex-col items-center p-1">
+              <iconify-icon class="mb-2" icon="logos:figma" height="80" width="80"
+                style="filter: drop-shadow(0 0 3px #ff72629d)"></iconify-icon>
+              <small>Figma</small>
+            </div>
+            <div class="flex flex-col items-center p-1">
+              <iconify-icon class="mb-2" icon="simple-icons:jirasoftware" width="80" height="80"
+                style="filter: drop-shadow(0 0 3px #1269E3); color: #2783fe;"></iconify-icon>
+              <small>Jira</small>
+            </div>
+            <div class="flex flex-col items-center p-1">
+              <iconify-icon class="mb-2" icon="logos:bootstrap" height="80" width="80"
+                style="filter: drop-shadow(0 0 3px #7E13F8)"></iconify-icon>
+              <small>Bootstrap</small>
+            </div>
+            <div class="flex flex-col items-center p-1">
+              <iconify-icon class="mb-2" icon="logos:nodejs-icon" height="80" width="80"
+                style="filter: drop-shadow(0 0 3px #539E43)"></iconify-icon>
+              <small>Node.js</small>
+            </div>
+            <div class="flex flex-col items-center p-1">
+              <iconify-icon class="mb-2" icon="logos:mongodb-icon" height="80" width="80"
+                style="filter: drop-shadow(0 0 3px #01EC64)"></iconify-icon>
+              <small>MongoDB</small>
+            </div>
+            <!-- <div class="flex flex-col items-center p-1">
+                        <iconify-icon class="mb-2" icon="logos:redis" height="80" width="80"
+                          style="filter: drop-shadow(0 0 3px #C6302B)"></iconify-icon>
+                        <small>Redis</small>
+                      </div> -->
+            <div class="flex flex-col items-center p-1">
+              <iconify-icon class="mb-2" icon="devicon:vscode" height="80" width="80"
+                style="filter: drop-shadow(0 0 3px #4AAFF3)"></iconify-icon>
+              <small>VS Code</small>
+            </div>
+            <div class="flex flex-col items-center p-1">
+              <iconify-icon class="mb-2" icon="vscode-icons:file-type-html" height="80" width="80"
+                style="filter: drop-shadow(0 0 3px #E44F26)"></iconify-icon>
+              <small>HTML5</small>
+            </div>
+            <div class="flex flex-col items-center p-1">
+              <iconify-icon class="mb-2" icon="vscode-icons:file-type-css" height="80" width="80"
+                style="filter: drop-shadow(0 0 3px #1572B6)"></iconify-icon>
+              <small>CSS3</small>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div>
+        <h1 id="school" class="text-2xl font-mono text-center">Education</h1>
+        <section class="text-center m-8">
+          <div class="mb-4">
+            <p class="text-xl">Computer Science, B.S.</p>
+            <p class="text-xl"><span class="font-mono">3.90</span> (Major) <span class="font-mono">3.87</span> (Overall)
+            </p>
+          </div>
+
+          <div class="my-2 mb-4 flex flex-col justify-center">
+            <img src="./images/uw_logo.png" alt="" class="object-contain h-20 m-4">
+            <p class="text-2xl font-semibold">University of Washington, Seattle</p>
+            <p class="text-xl">2023-Present</p>
+          </div>
+          <div class="my-2 flex flex-col justify-center">
+            <img src="./images/ucdavis_logo.png" alt="" class="object-contain h-12 m-4">
+            <p class="text-2xl font-semibold">University of California, Davis</p>
+            <p class="text-xl">2021-2023</p>
+          </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
+</body>
+
 </html>
