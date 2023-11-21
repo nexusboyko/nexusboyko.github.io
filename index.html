@@ -1,6 +1,6 @@
 <!DOCTYPE html
   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" data-theme="dark">
 
 <head>
   <meta charset="UTF-8" />
@@ -11,94 +11,48 @@
 
   <link rel="shortcut icon" href="" type="image/x-icon" />
   <link rel="stylesheet" href="index.css" />
-
-
 </head>
 
-<body>
-  <main>
-    <section id="hero" class="flex flex-wrap justify-center items-center py-8">
-      <div class="w-56 me-4">
-        <img src="./images/profile.jpeg" class="rounded-lg" alt="profile picture">
-      </div>
-      <div class="text-center md:text-left">
-        <h1 class="text-3xl mb-2 font-mono">Alex Boyko</h1>
-        <p class="my-1">Junior CS student @
-          <span class="font-semibold">UW, Seattle.</span> <br /> Passionate about software development and design.
-        </p>
-        <div class="flex items-center">
-          <p id="resume" class="my-2 font-semibold">Check out my resume.</p>
-          <div class="font-mono badge badge-neutral text-white hover:badge-ghost me-1 font-normal text-base p-3 ms-2">
-            <a href="docs/Alexander_Boyko_Resume_Sep2023.pdf" target="_blank" title="LinkedIn"
-              class="flex items-center">
-              <iconify-icon icon="mi:document" class="me-1"></iconify-icon>Resume
-            </a>
-          </div>
-        </div>
-        <div id="contact" class="my-1">
-          <p class="font-semibold">Get in touch or view my work.</p>
-          <ul class="py-1">
-            <li class="font-mono badge badge-neutral text-white hover:badge-ghost me-1 font-normal text-base p-3">
-              <a href="https://www.linkedin.com/in/aboyko2003/" target="_blank" title="LinkedIn"
-                class="flex items-center">
-                <iconify-icon icon="mdi:linkedin" class="me-1"></iconify-icon>LinkedIn
-              </a>
-            </li>
-            <li class="font-mono badge badge-neutral text-white hover:badge-ghost m-1 font-normal text-base p-3">
-              <a href="mailto:alexboyko@outlook.com" title="Outlook" class="flex items-center">
-                <iconify-icon icon="mdi:outlook" class="me-1"></iconify-icon>Outlook
-              </a>
-            </li>
-            <li class="font-mono badge badge-neutral text-white hover:badge-ghost ms-1 font-normal text-base p-3">
-              <a href="https://github.com/nexusboyko" target="_blank" title="Github" class="flex items-center">
-                <iconify-icon icon="mdi:github" class="me-1"></iconify-icon>Github
-              </a>
-            </li>
-          </ul>
-        </div>
+<body class="font-segoe h-screen">
+  <main class="section-container">
+    <!-- hero -->
+    <section id="home" class="flex flex-col flex-wrap text-center justify-center items-center">
+      <div class="w-56 sm:w-72 mb-4">
+        <img src="./images/profile.jpg" class="rounded-full" alt="profile picture">
       </div>
       <div>
+        <h1 class="text-4xl sm:text-5xl mb-4 font-light">Alex Boyko</h1>
+        <p class="text-lg sm:text-xl my-1">Studying computer science at the Unversity of Washington, Seattle.</p>
+        <p class="text-lg sm:text-xl mt-1 mb-4">Enjoy the challenge of creating things in software development.</p>
       </div>
+      <ul class="flex flex-wrap sm:flex-row justify-center items-center sm:space-x-4 text-2xl font-semibold">
+        <li class="p-2 hover:cursor-pointer hover:bg-gray-800 hover:bg-opacity-75 hover:rounded-lg 
+                    transition ease-in-out delay-150 hover:scale-[110%] duration-200 flex align-middle items-center justify-center">
+          <a href="docs/Alexander_Boyko_Resume_Nov2023.pdf" target="_blank" title="LinkedIn" class="block p-0 m-0 me-1">
+            Résumé
+          </a>
+          <iconify-icon icon="mdi:resume" height="28"></iconify-icon>
+        </li>
+        <li class="p-2 hover:cursor-pointer hover:bg-gray-800 hover:bg-opacity-75 hover:rounded-lg 
+                    transition ease-in-out delay-150 hover:scale-[110%] duration-200 flex align-middle items-center justify-center">
+          <a href="https://www.linkedin.com/in/aboyko2003/" target="_blank" title="LinkedIn" class="block p-0 m-0 me-1">
+            LinkedIn
+          </a>
+          <iconify-icon icon="mdi:linkedin" height="32"></iconify-icon>
+        </li>
+        <li class="p-2 hover:cursor-pointer hover:bg-gray-800 hover:bg-opacity-75 hover:rounded-lg 
+                    transition ease-in-out delay-150 hover:scale-[110%] duration-200 flex align-middle items-center justify-center">
+          <a href="https://github.com/nexusboyko" target="_blank" title="Github" class="block p-0 m-0 me-1">
+            Github
+          </a>
+          <iconify-icon icon="mdi:github" height="32"></iconify-icon>
+        </li>
+      </ul>
+      <a href="#projects" class="underline">Check out some of my projects...</a>
     </section>
-
-    <h1 class="text-center text-2xl font-mono">Professional Experience</h1>
-    <section id="projects" class="grid grid-cols-1 sm:grid-cols-2 my-8 gap-3">
-      <div class="card bg-base-200 shadow-lg rounded-md">
-        <div class="card-body">
-          <h2 class="card-title font-bold">Software Development Intern
-          </h2>
-          <div class="badge badge-neutral">Jun 2023 - Aug 2023</div>
-          <h1 class="font-mono text-xl">Akvelon, Inc.</h1>
-          <p class="mb-2">End-to-end frontend development in collaboration with backend implementation.
-            <br> Active role in moving the team through a full development cycle of a new product: story-boarding and
-            capturing project
-            requirements; goal setting and tracking daily progress; collaborating in a shared source code repo;
-            debugging and
-            reviewing code changes; deploying to production and collecting user feedback.
-          </p>
-        </div>
-
-      </div>
-
-      <div class="card bg-base-200 shadow-lg rounded-md">
-        <div class="card-body">
-          <h2 class="card-title font-bold">Swim Instructor
-          </h2>
-          <div class="badge badge-neutral">Aug 2018 - Aug 2023</div>
-          <h1 class="font-mono text-xl">WAVE Aquatics</h1>
-          <p class="mb-2">
-            Five years of experience in teaching water skills and safety, team communication skills, program management,
-            employee
-            training, basic administrative tasks, and customer services.
-          </p>
-        </div>
-      </div>
-
-    </section>
-
-    <h1 class="text-center text-2xl font-mono">Projects</h1>
-    <section id="projects" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 my-8 gap-3">
-      <div class="card bg-base-200 shadow-lg rounded-md">
+    <!-- projects -->
+    <section id="projects" class="w-[80%] m-auto pt-20 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 overflow-visible">
+      <div class="card bg-gray-800 bg-opacity-75 shadow-lg rounded-md">
         <div class="card-body">
           <h2 class="card-title font-bold">Study Assistant
             <a href="https://study-assistant.akvelon.net/">
@@ -125,7 +79,7 @@
         </figure>
       </div>
 
-      <div class="card bg-base-200 shadow-lg rounded-md">
+      <div class="card bg-gray-800 bg-opacity-75 shadow-lg rounded-md">
         <div class="card-body">
           <h2 class="card-title font-bold">curatedlist.io
             <a href="https://curatedlist.io/">
@@ -148,9 +102,7 @@
           <img src="images/curatedlist.io/curated-list-screenshot.png" alt="Homepage" />
         </figure>
       </div>
-
-
-      <div class="card bg-base-200 shadow-lg rounded-md">
+      <div class="card bg-gray-800 bg-opacity-75 shadow-lg rounded-md">
         <div class="card-body">
           <h2 class="card-title font-bold">Kits Cubed App
             <a href="https://github.com/payday2021/Kits-Cubed-App-Development">
@@ -168,120 +120,13 @@
             <div class="badge badge-outline select-none">SQLite</div>
           </div>
         </div>
-    </section>
-
-    <section class="grid grid-cols-1 lg:grid-cols-2">
-      <div>
-        <h1 class="text-center text-2xl font-mono">Skills & Tools</h1>
-        <section id="skills" class="flex justify-center">
-          <div class="icon-list grid grid-cols-4 sm:grid-cols-5 gap-8 grid-flow-row-dense m-8">
-            <div class="flex flex-col items-center p-1">
-              <iconify-icon class="mb-2" icon="logos:react" height="80" width="80"
-                style="filter: drop-shadow(0 0 3px #00D8FF)"></iconify-icon>
-              <small>React</small>
-            </div>
-            <div class="flex flex-col items-center p-1">
-              <iconify-icon class="mb-2" icon="logos:redux" height="80" width="80"
-                style="filter: drop-shadow(0 0 3px #764ABC)"></iconify-icon>
-              <small>Redux</small>
-            </div>
-            <div class="flex flex-col items-center p-1">
-              <iconify-icon class="mb-2" icon="devicon:typescript" height="80" width="80"
-                style="filter: drop-shadow(0 0 3px #007ACC)"></iconify-icon>
-              <small>TypeScript</small>
-            </div>
-            <div class="flex flex-col items-center p-1">
-              <iconify-icon class="mb-2" icon="vscode-icons:file-type-tailwind" height="80" width="80"
-                style="filter: drop-shadow(0 0 3px #44A8B3);"></iconify-icon>
-              <small>Tailwind</small>
-            </div>
-            <div class="flex flex-col items-center p-1">
-              <iconify-icon class="mb-2" icon="logos:gitlab" height="80" width="80"
-                style="filter: drop-shadow(0 0 3px #FC6D26)"></iconify-icon>
-              <small>GitLab</small>
-            </div>
-            <div class="flex flex-col items-center p-1">
-              <iconify-icon class="mb-2" icon="logos:git-icon" height="80" width="80"
-                style="filter: drop-shadow(0 0 3px #F34F29)"></iconify-icon>
-              <small>Git</small>
-            </div>
-            <div class="flex flex-col items-center p-1">
-              <iconify-icon class="mb-2" icon="devicon:fastapi" height="80" width="80"
-                style="filter: drop-shadow(0 0 3px #049688)"></iconify-icon>
-              <small>FastAPI</small>
-            </div>
-            <div class="flex flex-col items-center p-1">
-              <iconify-icon class="mb-2" icon="logos:figma" height="80" width="80"
-                style="filter: drop-shadow(0 0 3px #ff72629d)"></iconify-icon>
-              <small>Figma</small>
-            </div>
-            <div class="flex flex-col items-center p-1">
-              <iconify-icon class="mb-2" icon="simple-icons:jirasoftware" width="80" height="80"
-                style="filter: drop-shadow(0 0 3px #1269E3); color: #2783fe;"></iconify-icon>
-              <small>Jira</small>
-            </div>
-            <div class="flex flex-col items-center p-1">
-              <iconify-icon class="mb-2" icon="logos:bootstrap" height="80" width="80"
-                style="filter: drop-shadow(0 0 3px #7E13F8)"></iconify-icon>
-              <small>Bootstrap</small>
-            </div>
-            <div class="flex flex-col items-center p-1">
-              <iconify-icon class="mb-2" icon="logos:nodejs-icon" height="80" width="80"
-                style="filter: drop-shadow(0 0 3px #539E43)"></iconify-icon>
-              <small>Node.js</small>
-            </div>
-            <div class="flex flex-col items-center p-1">
-              <iconify-icon class="mb-2" icon="logos:mongodb-icon" height="80" width="80"
-                style="filter: drop-shadow(0 0 3px #01EC64)"></iconify-icon>
-              <small>MongoDB</small>
-            </div>
-            <!-- <div class="flex flex-col items-center p-1">
-                        <iconify-icon class="mb-2" icon="logos:redis" height="80" width="80"
-                          style="filter: drop-shadow(0 0 3px #C6302B)"></iconify-icon>
-                        <small>Redis</small>
-                      </div> -->
-            <div class="flex flex-col items-center p-1">
-              <iconify-icon class="mb-2" icon="devicon:vscode" height="80" width="80"
-                style="filter: drop-shadow(0 0 3px #4AAFF3)"></iconify-icon>
-              <small>VS Code</small>
-            </div>
-            <div class="flex flex-col items-center p-1">
-              <iconify-icon class="mb-2" icon="vscode-icons:file-type-html" height="80" width="80"
-                style="filter: drop-shadow(0 0 3px #E44F26)"></iconify-icon>
-              <small>HTML5</small>
-            </div>
-            <div class="flex flex-col items-center p-1">
-              <iconify-icon class="mb-2" icon="vscode-icons:file-type-css" height="80" width="80"
-                style="filter: drop-shadow(0 0 3px #1572B6)"></iconify-icon>
-              <small>CSS3</small>
-            </div>
-          </div>
-        </section>
-      </div>
-      <div>
-        <h1 id="school" class="text-2xl font-mono text-center">Education</h1>
-        <section class="text-center m-8">
-          <div class="mb-4">
-            <p class="text-xl">Computer Science, B.S.</p>
-            <p class="text-xl"><span class="font-mono">3.90</span> (Major) <span class="font-mono">3.87</span> (Overall)
-            </p>
-          </div>
-
-          <div class="my-2 mb-4 flex flex-col justify-center">
-            <img src="./images/uw_logo.png" alt="" class="object-contain h-20 m-4">
-            <p class="text-2xl font-semibold">University of Washington, Seattle</p>
-            <p class="text-xl">2023-Present</p>
-          </div>
-          <div class="my-2 flex flex-col justify-center">
-            <img src="./images/ucdavis_logo.png" alt="" class="object-contain h-12 m-4">
-            <p class="text-2xl font-semibold">University of California, Davis</p>
-            <p class="text-xl">2021-2023</p>
-          </div>
       </div>
     </section>
 
+    <div class="flex justify-center py-10">
+      <a href="#home" class="underline">Back up!</a>
+    </div>
   </main>
-
   <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
 </body>
 
