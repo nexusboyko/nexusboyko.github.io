@@ -1,10 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./**/*.{html,js,css}"],
+  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
         inter: 'Inter',
+        segoe: 'Segoe UI',
         mono: 'JetBrainsMono',
       },
       colors: {
@@ -15,7 +17,7 @@ module.exports = {
   },
   plugins: [ require("daisyui") ],
   daisyui: {
-    themes: ["dark", "light"]
+    themes: ["light", "dark"]    
   }
 }
 
