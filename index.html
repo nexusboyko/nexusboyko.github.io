@@ -1,133 +1,198 @@
-<!DOCTYPE html
-  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" data-theme="dark">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alex Boyko</title>
 
-  <title>Alex Boyko</title>
+    <link rel="shortcut icon" href="" type="image/x-icon" />
+    <link rel="stylesheet" href="index.css" />
+  </head>
 
-  <link rel="shortcut icon" href="" type="image/x-icon" />
-  <link rel="stylesheet" href="index.css" />
-</head>
+  <body class="font-inter h-screen">
+    <main class="w-[80%] mx-auto">
+      <!-- hero -->
+      <section
+        id="home"
+        class="flex flex-col justify-center items-center h-[100vh]"
+      >
+        <div class="md:flex items-center justify-between mb-[10%]">
+          <img
+            src="./images/pfp.jpg"
+            class="w-60 mx-auto mb-5 md:m-0 rounded-full bg-gray-500 md:me-10"
+            alt="pfp"
+          />
 
-<body class="font-segoe h-screen">
-  <main class="section-container">
-    <!-- hero -->
-    <section id="home" class="flex flex-col flex-wrap text-center justify-center items-center">
-      <div class="w-56 sm:w-72 mb-4">
-        <img src="./images/profile.jpg" class="rounded-full" alt="profile picture">
-      </div>
-      <div>
-        <h1 class="text-4xl sm:text-5xl mb-4 font-light">Alex Boyko</h1>
-        <p class="text-lg sm:text-xl my-1">Studying computer science at the Unversity of Washington, Seattle.</p>
-        <p class="text-lg sm:text-xl mt-1 mb-4">Enjoy the challenge of creating things in software development.</p>
-      </div>
-      <ul class="flex flex-wrap sm:flex-row justify-center items-center sm:space-x-4 text-2xl font-semibold">
-        <li class="p-2 hover:cursor-pointer hover:bg-gray-800 hover:bg-opacity-75 hover:rounded-lg 
-                    transition ease-in-out delay-150 hover:scale-[110%] duration-200 flex align-middle items-center justify-center">
-          <a href="docs/Alexander_Boyko_Resume_Nov2023.pdf" target="_blank" title="LinkedIn" class="block p-0 m-0 me-1">
-            Résumé
-          </a>
-          <iconify-icon icon="mdi:resume" height="28"></iconify-icon>
-        </li>
-        <li class="p-2 hover:cursor-pointer hover:bg-gray-800 hover:bg-opacity-75 hover:rounded-lg 
-                    transition ease-in-out delay-150 hover:scale-[110%] duration-200 flex align-middle items-center justify-center">
-          <a href="https://www.linkedin.com/in/aboyko2003/" target="_blank" title="LinkedIn" class="block p-0 m-0 me-1">
-            LinkedIn
-          </a>
-          <iconify-icon icon="mdi:linkedin" height="32"></iconify-icon>
-        </li>
-        <li class="p-2 hover:cursor-pointer hover:bg-gray-800 hover:bg-opacity-75 hover:rounded-lg 
-                    transition ease-in-out delay-150 hover:scale-[110%] duration-200 flex align-middle items-center justify-center">
-          <a href="https://github.com/nexusboyko" target="_blank" title="Github" class="block p-0 m-0 me-1">
-            Github
-          </a>
-          <iconify-icon icon="mdi:github" height="32"></iconify-icon>
-        </li>
-      </ul>
-      <a href="#projects" class="underline">Check out some of my projects...</a>
-    </section>
-    <!-- projects -->
-    <section id="projects" class="w-[80%] m-auto pt-20 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 overflow-visible">
-      <div class="card bg-gray-800 bg-opacity-75 shadow-lg rounded-md">
-        <div class="card-body">
-          <h2 class="card-title font-bold">Study Assistant
-            <a href="https://study-assistant.akvelon.net/">
-              <iconify-icon icon="ph:link-bold"></iconify-icon>
-            </a>
-          </h2>
-          <p class="mb-2">Designed, built, and deployed a real-time chat application which provided an interactive study
-            assistant powered by
-            OpenAI. <br> Led end-to-end frontend development, worked with partner team on backend implementation.
-            Released
-            and made
-            publicly available for high schools and universities.
-          </p>
-          <div class="card-actions justify-end font-mono">
-            <div class="badge badge-outline select-none">React</div>
-            <div class="badge badge-outline select-none">Redux</div>
-            <div class="badge badge-outline select-none">TypeScript</div>
-            <div class="badge badge-outline select-none">FastAPI</div>
-            <div class="badge badge-outline select-none">OpenAI</div>
+          <div>
+            <div class="text-center md:text-left">
+              <h1 class="text-3xl sm:text-5xl mb-4 font-bold">Alex Boyko</h1>
+              <p class="text-xl my-1">
+                Studying computer science at the Unversity of Washington,
+                Seattle.
+              </p>
+              <p class="text-xl mt-1 mb-4">
+                Enjoy the challenge of creating new things in software development.
+              </p>
+            </div>
+
+            <ul class="flex flex-wrap items-center justify-center md:justify-start gap-3">
+              <li class="flex items-center">
+                <a
+                  href="docs/Alexander_Boyko_Resume_June_2024.pdf"
+                  target="_blank"
+                  title="LinkedIn"
+                  class="badge badge-outline hover:bg-primary hover:text-background p-4"
+                >
+                  <span class="text-lg me-1">Resume</span
+                  ><iconify-icon icon="mdi:resume" height="20"></iconify-icon>
+                </a>
+              </li>
+              <li class="flex items-center">
+                <a
+                  href="https://github.com/nexusboyko"
+                  target="_blank"
+                  title="Github"
+                  class="badge badge-outline hover:bg-primary hover:text-background p-4"
+                >
+                  <span class="text-lg me-1">Github</span
+                  ><iconify-icon icon="mdi:github" height="20"></iconify-icon>
+                </a>
+              </li>
+              <li class="flex items-center">
+                <a
+                  href="https://www.linkedin.com/in/aboyko2003/"
+                  target="_blank"
+                  title="LinkedIn"
+                  class="badge badge-outline hover:bg-primary hover:text-background p-4"
+                >
+                  <span class="text-lg me-1">LinkedIn</span
+                  ><iconify-icon icon="mdi:linkedin" height="20"></iconify-icon>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
-        <figure>
-          <img src="images/studyassistant/study_assistant_1.png" alt="Dashboard" />
-        </figure>
-      </div>
 
-      <div class="card bg-gray-800 bg-opacity-75 shadow-lg rounded-md">
-        <div class="card-body">
-          <h2 class="card-title font-bold">curatedlist.io
-            <a href="https://curatedlist.io/">
-              <iconify-icon icon="ph:link-bold"></iconify-icon>
-            </a>
-          </h2>
-          <p class="mb-2">Started in the summer of 2020.
-            <br>
-            Co-created and continue to help design/develop a web application that serves as an all-in-one, multipurpose
-            collaboration space that allows users to create, share, and track multimedia learning materials.
-          </p>
-          <div class="card-actions justify-end font-mono">
-            <div class="badge badge-outline select-none">React</div>
-            <div class="badge badge-outline select-none">Redux</div>
-            <div class="badge badge-outline select-none">Redis</div>
-            <div class="badge badge-outline select-none">Material UI</div>
+        <a href="#projects" class="">Check out what I've done ↓</a>
+
+      </section>
+
+      <section id="projects" class="flex flex-col items-center justify-center gap-2 my-16">
+
+        <h1 class="text-2xl font-mono mt-5">Professional work</h1>
+
+        <div class="w-full border-b my-4"></div>
+
+        <!-- curatedlist.io -->
+        <div class="lg:flex items-center w-full hidden-item">
+          <img
+            src="./images/curatedlist.io/curatedlisthome.png"
+            alt="curatedlist.io"
+            class="lg:w-1/2"
+          />
+          <div class="lg:w-1/2 p-5">
+            <a
+              href="https://curatedlist.io/"
+              target="_blank"
+              class="underline text-5xl font-bold"
+              >curatedlist.io</a
+            >
+            <div class="mt-2 text-xl">
+              <p class="mb-2">
+                Co-creator and developer of an application serving as an
+                all-in-one collaboration space that allows users
+                to create, share, and track multimedia learning materials.
+              </p>
+              <p class="mb-2">
+                Currently re-designing + transitioning from React to NextJS and
+                TypeScript.
+              </p>
+            </div>
           </div>
         </div>
-        <figure>
-          <img src="images/curatedlist.io/curated-list-screenshot.png" alt="Homepage" />
-        </figure>
-      </div>
-      <div class="card bg-gray-800 bg-opacity-75 shadow-lg rounded-md">
-        <div class="card-body">
-          <h2 class="card-title font-bold">Kits Cubed App
-            <a href="https://github.com/payday2021/Kits-Cubed-App-Development">
-              <iconify-icon icon="mdi:github"></iconify-icon>
-            </a>
-          </h2>
-          <p class="mb-2">
-            Co-developing a mobile app for a local STEM youth program in Oakland, CA, that will provide easier
-            accessibility to science kits, events, and educational content through the use of smartphones
-          </p>
-          <div class="card-actions justify-end font-mono">
-            <div class="badge badge-outline select-none">React Native</div>
-            <div class="badge badge-outline select-none">Redux</div>
-            <div class="badge badge-outline select-none">NodeJS</div>
-            <div class="badge badge-outline select-none">SQLite</div>
+
+        <div class="w-full border-b my-4"></div>
+
+        <!-- study assistant -->
+        <div class="lg:flex items-center w-full hidden-item">
+          <img
+            src="./images/studyassistant/study_assistant_1.png"
+            alt="study assistant"
+            class="lg:w-1/2"
+          />
+          <div class="lg:w-1/2 p-5">
+            <a
+              href="https://study-assistant.akvelon.net/"
+              target="_blank"
+              class="underline text-5xl font-bold"
+              >AI Study Assistant</a
+            >
+            <div class="mt-2 text-xl">
+              <p class="mb-2">
+                Designed, built, and deployed a real-time chat application which
+                provided an interactive study assistant powered by OpenAI.
+              </p>
+              <p class="mb-2">
+                Led end-to-end frontend development, worked with partner team on
+                backend implementation.
+              </p>
+              <p class="mb-2">
+                Released and made publicly available for high schools and
+                universities.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <div class="flex justify-center py-10">
-      <a href="#home" class="underline">Back up!</a>
-    </div>
-  </main>
-  <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
-</body>
+        <h1 class="text-2xl font-mono mt-20">Side projects</h1>
 
+        <div class="w-full border-b my-4"></div>
+
+        <div class="xl:flex items-center w-full hidden-item">
+          <div class="flex items-center w-full">
+            <img src="./images/other/courser.png" alt="courser" class="w-1/2 rounded-xl">
+            <div class="w-1/2 p-5">
+              <a href="https://github.com/nexusboyko/courser" class="underline text-3xl font-bold">Courser</a>
+              <div class="mt-2 text-lg">
+                <p class="mb-2">
+                  A crawler that finds all available resources from a specificed link, organizing discovered links in a directory structure you can easily navigate.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-center w-full hidden-item">
+            <img src="./images/other/icon-carousel-gif-draggable.gif" alt="icon carousel" class="w-1/2">
+            <div class="w-1/2 p-5">
+              <a href="https://github.com/nexusboyko/icon-carousel" class="underline text-3xl font-bold">Icon Carousel</a>
+              <div class="mt-2 text-lg">
+                <p class="mb-2">
+                  A simple vanilla JS script for an interactive rotating icon carousel.
+                </p>
+                <p class="mb-2">
+                  The current version of the carousel works with icons from the iconify-icon library.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a href="#home" class="pt-5">Back to top ↑</a>
+      </section>
+    </main>
+
+    <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
+    <script>
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if(!entry.isIntersecting) return
+          entry.target.classList.toggle("show", entry.isIntersecting);
+        });
+      });
+      const hiddenElements = document.querySelectorAll(".hidden-item");
+      hiddenElements.forEach((el) => observer.observe(el));
+    </script>
+  </body>
 </html>
