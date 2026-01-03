@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="keywords" content="Alex Boyko, software engineer, web developer, Visa, full stack developer" />
+    <meta name="description" content="Alex Boyko - Software Engineer building international payments solutions at Visa" />
+    <title>Alex Boyko - Software Engineer</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <noscript>
+      <div class="noscript-warning">
+        <strong>Note:</strong> This site uses JavaScript for the blog functionality.
+        All other content is available without JavaScript.
+      </div>
+    </noscript>
+
+    <div class="container">
+      <!-- Header -->
+      <h1>Alex Boyko</h1>
+
+      <!-- Progress Bar Hero -->
+      <div class="progress-container">
+        <div class="progress-label">Loading productivity level...</div>
+        <div class="progress-bar-outer">
+          <div class="progress-bar-inner" id="progressBar"></div>
+        </div>
+        <div class="progress-text" id="progressText">0%</div>
+        <div class="progress-message" id="progressMessage" style="display: none;">
+          too busy working on cool stuff to update this site
+        </div>
+      </div>
+
+      <hr />
+
+      <!-- About -->
+      <section class="section">
+        <p>Building international payments solutions @ <strong>Visa</strong></p>
+        <p style="margin-top: 10px;">
+          <a href="./docs/AlexanderBoyko_CV_Jan2025.pdf" target="_blank">resume</a> |
+          <a href="https://linkedin.com/in/aboyko2003" target="_blank">linkedin</a> |
+          <a href="https://github.com/nexusboyko" target="_blank">github</a>
+        </p>
+      </section>
+
+      <!-- Work Experience -->
+      <section class="section">
+        <h2 class="section-title">Work Experience</h2>
+
+        <div class="work-item">
+          <div class="work-header">
+            <h3 class="work-title">Visa, Software Engineer</h3>
+            <span class="work-date">May 2025 – Present</span>
+          </div>
+          <ul class="work-details">
+            <li>Built first end-to-end international merchant dashboard @ <a href="https://www.authorize.net/" target="_blank">Authorize.net</a></li>
+            <li>Fullstack w/ TypeScript + Tanstack; managed AWS infra and CI/CD pipelines</li>
+            <li>Coordinated across teams to drive deliverables & present to leadership</li>
+            <li>Independently reduced team's TTD w/ open-sourced AI no-code design tool</li>
+          </ul>
+        </div>
+
+        <hr />
+
+        <div class="work-item">
+          <div class="work-header">
+            <h3 class="work-title">Akvelon, Inc. - Software Development Intern</h3>
+            <span class="work-date">2023</span>
+          </div>
+          <ul class="work-details">
+            <li>Designed and deployed full-cycle software project</li>
+            <li>Led frontend development and contributed to backend APIs</li>
+            <li>Code reviews, Agile delivery, story-boarding & stand-ups</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section class="section">
+        <h2 class="section-title">Projects</h2>
+        <ul class="projects-list">
+          <li><span class="project-link">curatedlist.io</span> - Curated collection platform</li>
+          <li><span class="project-link">AI Study Assistant</span> - Intelligent learning companion</li>
+          <li><span class="project-link">3place</span> - Community platform project</li>
+          <li><span class="project-link">courser</span> - Course management tool</li>
+        </ul>
+      </section>
+
+      <hr />
+
+      <!-- Blog Section -->
+      <section class="blog-section">
+        <h2 class="section-title">Blog</h2>
+        <div id="blog-posts">
+          <p class="empty-state">Loading posts...</p>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <p>© 2026 Alex Boyko</p>
+        <div class="footer-links">
+          <a href="./docs/AlexanderBoyko_CV_Jan2025.pdf" target="_blank">Resume</a> |
+          <a href="https://linkedin.com/in/aboyko2003" target="_blank">LinkedIn</a> |
+          <a href="https://github.com/nexusboyko" target="_blank">GitHub</a>
+        </div>
+        <p style="margin-top: 10px;">
+          <small>Press <kbd>Ctrl+Shift+B</kbd> for admin</small>
+        </p>
+        <p style="margin-top: 5px;">
+          <small class="meta">Last updated: January 2026</small>
+        </p>
+      </footer>
+    </div>
+
+    <!-- Progress Bar Animation Script -->
+    <script>
+      // Animate progress bar to 500%
+      function animateProgress() {
+        const bar = document.getElementById('progressBar');
+        const text = document.getElementById('progressText');
+        const message = document.getElementById('progressMessage');
+
+        let progress = 0;
+        const targetProgress = 500;
+        const duration = 3000; // 3 seconds
+        const steps = 50;
+        const increment = targetProgress / steps;
+        const interval = duration / steps;
+
+        const timer = setInterval(() => {
+          progress += increment;
+          bar.style.width = progress + '%';
+          text.textContent = Math.floor(progress) + '%';
+
+          if (progress >= targetProgress) {
+            clearInterval(timer);
+            bar.style.width = '500%';
+            text.textContent = '500%';
+            message.style.display = 'block';
+          }
+        }, interval);
+      }
+
+      // Run animation on page load
+      window.addEventListener('load', animateProgress);
+    </script>
+
+    <!-- Blog System -->
+    <script src="blog.js"></script>
+  </body>
+</html>
