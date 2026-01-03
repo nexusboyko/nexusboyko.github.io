@@ -7,7 +7,7 @@ module.exports = {
       fontFamily: {
         inter: 'Inter',
         segoe: 'Segoe UI',
-        mono: 'SF Mono',
+        mono: 'JetBrainsMono',
       },
       colors: {
         border: "hsl(var(--border))",

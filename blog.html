@@ -6,6 +6,9 @@
   <title>Blog - Alex Boyko</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="favicon.ico">
+
+  <!-- TinyMCE -->
+  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 <body>
   <div class="container blog-page">
@@ -19,14 +22,17 @@
       <p style="text-align: center; color: #999;">Loading posts...</p>
     </div>
 
-    <!-- Admin login (shows on Ctrl+Shift+B) -->
+    <!-- Admin panel (Ctrl+Shift+B) -->
     <div id="admin-panel" style="display: none;">
-      <form id="admin-form" class="admin-form">
+      <form id="admin-form" class="admin-form" enctype="multipart/form-data">
         <h2>New Post</h2>
         <input type="text" id="title" placeholder="Title" required>
-        <textarea id="content" placeholder="Content (Markdown supported)" required></textarea>
+        <textarea id="editor"></textarea>
         <input type="file" id="image" accept="image/*">
-        <button type="submit">Publish</button>
+        <div style="margin-top: 1rem;">
+          <button type="submit">Publish</button>
+          <button type="button" id="cancel-btn" style="background: #999;">Cancel</button>
+        </div>
       </form>
     </div>
   </div>

@@ -1,5 +1,6 @@
 /* Minimal Personal Site */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600&display=swap');
+@import url('./helvetica.css');
 
 * {
   margin: 0;
@@ -8,7 +9,8 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  /* font-family: 'Helvetica Neue', Arial, sans-serif; */
+  font-family: 'Noto Serif', Georgia, serif;
   font-size: 14px;
   line-height: 1.6;
   color: #333;

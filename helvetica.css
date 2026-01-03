@@ -1,0 +1,92 @@
+/*---------------------------------------------------------------------------*
+ * Helvetica Neue
+ *---------------------------------------------------------------------------*/
+
+/** Bold */
+@font-face {
+  font-family: "Helvetica Neue";
+  font-weight: 700;
+  src: url("./helvetica-neue-master/HelveticaNeue-Bold.otf");
+}
+
+/** Bold Italic */
+@font-face {
+  font-family: "Helvetica Neue";
+  font-weight: 700;
+  font-style: italic;
+  src: url("./helvetica-neue-master/HelveticaNeue-BoldItalic.otf");
+}
+
+/** Light */
+@font-face {
+  font-family: "Helvetica Neue";
+  font-weight: 200;
+  src: url("./helvetica-neue-master/HelveticaNeue-Light.otf");
+}
+
+/** Light Italic */
+@font-face {
+  font-family: "Helvetica Neue";
+  font-weight: 200;
+  font-style: italic;
+  src: url("./helvetica-neue-master/HelveticaNeue-LightItalic.otf");
+}
+
+/** Medium */
+@font-face {
+  font-family: "Helvetica Neue";
+  font-weight: 500;
+  src: url("./helvetica-neue-master/HelveticaNeue-Medium.otf");
+}
+
+/** Medium Italic */
+@font-face {
+  font-family: "Helvetica Neue";
+  font-weight: 500;
+  font-style: italic;
+  src: url("./helvetica-neue-master/HelveticaNeue-MediumItalic.otf");
+}
+
+/** Regular */
+@font-face {
+  font-family: "Helvetica Neue";
+  font-weight: 400;
+  src: url("./helvetica-neue-master/HelveticaNeue-Regular.otf");
+}
+
+/** Regular Italic */
+@font-face {
+  font-family: "Helvetica Neue";
+  font-weight: 400;
+  font-style: italic;
+  src: url("./helvetica-neue-master/HelveticaNeue-RegularItalic.otf");
+}
+
+/** Semibold */
+@font-face {
+  font-family: "Helvetica Neue";
+  font-weight: 600;
+  src: url("./helvetica-neue-master/HelveticaNeue-Semibold.otf");
+}
+
+/** Semibold Italic */
+@font-face {
+  font-family: "Helvetica Neue";
+  font-weight: 600;
+  font-style: italic;
+  src: url("./helvetica-neue-master/HelveticaNeue-SemiboldItalic.otf");
+}
+
+/** Thin */
+@font-face {
+  font-family: "Helvetica Neue";
+  font-weight: 100;
+  src: url("./helvetica-neue-master/HelveticaNeue-Thin.otf");
+}
+
+/** Ultra Light */
+@font-face {
+  font-family: "Helvetica Neue";
+  font-weight: 800;
+  src: url("./helvetica-neue-master/HelveticaNeue-Ultralight.otf");
+}
