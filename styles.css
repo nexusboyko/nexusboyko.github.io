@@ -1,12 +1,14 @@
 /* ===================================== */
 /* MINIMAL PERSONAL WEBSITE             */
-/* Design: Noto Serif + SF Mono         */
+/* Design: Noto Serif (titles) + SF Mono (body) */
+/* Inspired by: Michael Andreuzza       */
 /* ===================================== */
 
 /* ===== FONT IMPORTS ===== */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600&display=swap');
+@import url('./sf.css');
 
-/* ===== CSS RESET & BASE ===== */
+/* ===== CSS RESET ===== */
 * {
   margin: 0;
   padding: 0;
@@ -21,13 +23,6 @@
   --text-secondary: #666;
   --accent: #0066cc;
   --border: #e5e5e5;
-
-  /* Spacing scale (8px grid) */
-  --space-xs: 0.5rem;
-  --space-sm: 1rem;
-  --space-md: 2rem;
-  --space-lg: 4rem;
-  --space-xl: 8rem;
 }
 
 :root.dark {
@@ -39,95 +34,103 @@
   --border: #2a2a2a;
 }
 
-/* ===== TYPOGRAPHY SYSTEM ===== */
+/* ===== BASE STYLES - SF MONO FOR BODY ===== */
 body {
-  font-family: 'Noto Serif', Georgia, serif;
-  font-size: 16px;
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-size: 14px;
   line-height: 1.6;
   color: var(--text-primary);
   background: var(--bg);
   text-align: center;
+  padding: 20px;
   transition: background 0.3s ease, color 0.3s ease;
 }
 
-h1, h2, h3, nav, time, .metadata {
-  font-family: 'SF Mono', Monaco, Consolas, 'Liberation Mono', monospace;
-  font-weight: 500;
-  line-height: 1.4;
+/* ===== HEADINGS - NOTO SERIF ===== */
+h1, h2 {
+  font-family: 'Noto Serif', Georgia, serif;
+  font-weight: 400;
 }
 
 h1 {
-  font-size: 2rem;
-  margin-bottom: var(--space-sm);
-  letter-spacing: -0.02em;
+  font-size: 2rem; /* 32px */
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
 }
 
 h2 {
-  font-size: 1.5rem;
-  margin-bottom: var(--space-md);
+  font-size: 1.2rem; /* 19.2px */
+  margin: 2rem 0 0.5rem;
 }
 
-h3 {
-  font-size: 1.2rem;
-  margin-bottom: var(--space-xs);
-}
-
-p {
-  font-size: 1rem;
-  margin-bottom: var(--space-md);
-}
-
-time, .metadata, .post-number {
-  font-family: 'SF Mono', Monaco, Consolas, monospace;
-  font-size: 0.875rem;
-  color: var(--text-secondary);
-  letter-spacing: 0.01em;
-}
-
-a {
-  color: var(--accent);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.2s ease;
-}
-
-a:hover {
-  border-bottom-color: var(--accent);
-}
-
-/* ===== LAYOUT & CONTAINER ===== */
+/* ===== LAYOUT ===== */
 .page-container {
-  max-width: 64ch;
+  max-width: 500px;
   margin: 0 auto;
-  padding: 16vh 1.5rem 4rem;
+  padding: 3rem 2rem;
   min-height: 100vh;
 }
 
-header {
-  margin-bottom: var(--space-lg);
+/* ===== BIO - SF MONO ===== */
+.bio {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  max-width: 40ch;
+  margin-left: auto;
+  margin-right: auto;
 }
 
+/* ===== NAVIGATION - SF MONO ===== */
+nav {
+  margin: 2rem 0;
+  font-size: 14px;
+}
+
+nav a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+nav a:hover {
+  opacity: 0.7;
+}
+
+/* ===== SECTIONS ===== */
 section {
-  margin-bottom: var(--space-xl);
+  margin-bottom: 2.5rem;
+}
+
+/* ===== LISTS - SF MONO ===== */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+li {
+  color: var(--text-primary);
 }
 
 /* ===== THEME TOGGLE ===== */
 .theme-toggle {
   position: fixed;
-  top: 2rem;
-  right: 2rem;
-  width: 2.5rem;
-  height: 2.5rem;
+  top: 1rem;
+  right: 1rem;
+  width: 2rem;
+  height: 2rem;
   border: 1px solid var(--border);
-  background: var(--bg);
+  background: transparent;
   border-radius: 50%;
   cursor: pointer;
+  font-size: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
-  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
-  z-index: 100;
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
 .theme-toggle:hover {
@@ -144,127 +147,29 @@ section {
   content: '☾';
 }
 
-/* ===== HOMEPAGE STYLES ===== */
-.hero-blurb {
-  font-size: 1.125rem;
-  color: var(--text-secondary);
-  font-style: italic;
-  margin-bottom: var(--space-lg);
-  max-width: 54ch;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.main-nav {
-  display: flex;
-  gap: var(--space-md);
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: var(--space-xl);
-}
-
-.main-nav a {
-  font-family: 'SF Mono', Monaco, Consolas, monospace;
-  font-size: 0.95rem;
-  padding: 0.25rem 0;
-}
-
-/* Work Section */
-.work-section h2,
-.projects-section h2 {
-  font-size: 1.2rem;
-  margin-bottom: var(--space-md);
-}
-
-.work-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-  text-align: left;
-}
-
-.work-item {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: var(--space-xs);
-  padding-bottom: var(--space-sm);
-  border-bottom: 1px solid var(--border);
-}
-
-.work-item:last-child {
-  border-bottom: none;
-}
-
-.work-company {
-  font-family: 'SF Mono', Monaco, Consolas, monospace;
-  font-weight: 600;
-  grid-column: 1 / 2;
-  grid-row: 1;
-}
-
-.work-role {
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-  grid-column: 1 / 2;
-  grid-row: 2;
-}
-
-.work-date {
-  font-family: 'SF Mono', Monaco, Consolas, monospace;
-  font-size: 0.875rem;
-  color: var(--text-secondary);
-  grid-column: 2 / 3;
-  grid-row: 1;
-  text-align: right;
-}
-
-/* Projects Section */
-.projects-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-  text-align: left;
-}
-
-.project-item {
-  padding-bottom: var(--space-sm);
-  border-bottom: 1px solid var(--border);
-}
-
-.project-item:last-child {
-  border-bottom: none;
-}
-
-.project-title {
-  font-family: 'SF Mono', Monaco, Consolas, monospace;
-  font-weight: 600;
-  display: block;
-  margin-bottom: var(--space-xs);
-}
-
-.project-desc {
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-  display: block;
-}
-
 /* ===== BLOG PAGE STYLES ===== */
 .blog-page {
   text-align: left;
 }
 
 .page-nav {
-  margin-bottom: var(--space-lg);
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
 .page-nav a {
-  font-family: 'SF Mono', Monaco, Consolas, monospace;
-  font-size: 0.9rem;
+  font-size: 14px;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.page-nav a:hover {
+  opacity: 0.7;
 }
 
 .blog-header {
   text-align: center;
-  margin-bottom: var(--space-xl);
+  margin-bottom: 3rem;
 }
 
 .blog-header h1 {
@@ -275,12 +180,12 @@ section {
 .blog-list {
   list-style: none;
   padding: 0;
-  margin: var(--space-lg) 0;
+  margin: 2rem 0;
 }
 
 .blog-item {
-  margin-bottom: var(--space-md);
-  padding-bottom: var(--space-md);
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
   border-bottom: 1px solid var(--border);
 }
 
@@ -291,10 +196,10 @@ section {
 .blog-item a {
   display: grid;
   grid-template-columns: 2ch 9ch 1fr;
-  gap: var(--space-sm);
+  gap: 1rem;
   align-items: baseline;
   color: var(--text-primary);
-  border-bottom: none;
+  text-decoration: none;
   transition: color 0.2s ease;
 }
 
@@ -302,27 +207,16 @@ section {
   color: var(--accent);
 }
 
-.blog-item a:hover .post-title {
-  border-bottom-color: var(--accent);
-}
-
-.post-number {
-  font-family: 'SF Mono', Monaco, Consolas, monospace;
-  color: var(--text-secondary);
-  font-size: 0.875rem;
-}
-
+.post-number,
 .post-date {
-  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-size: 14px;
   color: var(--text-secondary);
-  font-size: 0.875rem;
 }
 
 .post-title {
   font-family: 'Noto Serif', Georgia, serif;
-  font-size: 1rem;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.2s ease;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 /* Empty state */
@@ -330,47 +224,49 @@ section {
   color: var(--text-secondary);
   font-style: italic;
   text-align: center;
-  padding: var(--space-xl) 0;
+  padding: 3rem 0;
+  font-size: 14px;
 }
 
 /* ===== BLOG POST VIEW ===== */
 .post-view {
-  margin-top: var(--space-xl);
+  margin-top: 3rem;
 }
 
 .blog-post {
-  margin-bottom: var(--space-xl);
+  margin-bottom: 3rem;
 }
 
 .post-header {
-  margin-bottom: var(--space-lg);
+  margin-bottom: 2rem;
 }
 
 .post-header .post-date {
   display: block;
-  margin-bottom: var(--space-xs);
+  margin-bottom: 0.5rem;
+  font-size: 14px;
 }
 
 .post-header h2 {
-  font-family: 'SF Mono', Monaco, Consolas, monospace;
-  font-size: 1.75rem;
-  margin-bottom: var(--space-md);
+  font-family: 'Noto Serif', Georgia, serif;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 400;
 }
 
 .post-content {
-  font-family: 'Noto Serif', Georgia, serif;
-  font-size: 1rem;
+  font-size: 14px;
   line-height: 1.7;
-  margin-bottom: var(--space-lg);
+  margin-bottom: 2rem;
 }
 
 .post-content p {
   text-align: left;
-  margin-bottom: var(--space-md);
+  margin-bottom: 1rem;
 }
 
 .post-image {
-  margin: var(--space-lg) 0;
+  margin: 2rem 0;
 }
 
 .post-image img {
@@ -380,10 +276,15 @@ section {
 }
 
 .back-link {
-  font-family: 'SF Mono', Monaco, Consolas, monospace;
-  font-size: 0.9rem;
+  font-size: 14px;
   display: inline-block;
-  margin-bottom: var(--space-md);
+  margin-bottom: 1rem;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.back-link:hover {
+  opacity: 0.7;
 }
 
 /* ===== ADMIN MODAL ===== */
@@ -405,29 +306,28 @@ section {
   background: var(--bg);
   border: 1px solid var(--border);
   padding: 2rem;
-  max-width: 600px;
+  max-width: 500px;
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .modal-content h2 {
-  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-family: 'Noto Serif', Georgia, serif;
   font-size: 1.5rem;
-  margin-bottom: var(--space-md);
+  margin-bottom: 1.5rem;
+  font-weight: 400;
 }
 
 .form-group {
-  margin-bottom: var(--space-md);
+  margin-bottom: 1.5rem;
   text-align: left;
 }
 
 .form-group label {
   display: block;
-  font-family: 'SF Mono', Monaco, Consolas, monospace;
-  font-size: 0.9rem;
-  margin-bottom: var(--space-xs);
+  font-size: 14px;
+  margin-bottom: 0.5rem;
   color: var(--text-primary);
 }
 
@@ -440,27 +340,26 @@ section {
   border: 1px solid var(--border);
   background: var(--bg);
   color: var(--text-primary);
-  font-family: 'Noto Serif', Georgia, serif;
-  font-size: 1rem;
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-size: 14px;
 }
 
 .form-group textarea {
   min-height: 200px;
   resize: vertical;
-  font-family: 'Noto Serif', Georgia, serif;
   line-height: 1.6;
 }
 
 .help-text {
-  font-size: 0.85rem;
+  font-size: 12px;
   color: var(--text-secondary);
-  margin-top: var(--space-xs);
+  margin-top: 0.5rem;
   font-style: italic;
 }
 
 .current-image {
-  margin-top: var(--space-sm);
-  padding: var(--space-sm);
+  margin-top: 1rem;
+  padding: 1rem;
   border: 1px solid var(--border);
 }
 
@@ -468,17 +367,18 @@ section {
   max-width: 200px;
   height: auto;
   display: block;
-  margin-bottom: var(--space-sm);
+  margin-bottom: 1rem;
 }
 
 .form-buttons {
   display: flex;
-  gap: var(--space-sm);
-  margin-top: var(--space-md);
+  gap: 0.5rem;
+  margin-top: 1.5rem;
 }
 
 .btn {
   font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-size: 14px;
   padding: 0.5rem 1rem;
   border: 1px solid var(--border);
   background: var(--bg);
@@ -504,17 +404,17 @@ section {
 }
 
 .post-admin {
-  margin-top: var(--space-lg);
-  padding-top: var(--space-md);
+  margin-top: 2rem;
+  padding-top: 1rem;
   border-top: 1px solid var(--border);
   display: flex;
-  gap: var(--space-sm);
+  gap: 0.5rem;
 }
 
 .btn-edit,
 .btn-delete {
   font-family: 'SF Mono', Monaco, Consolas, monospace;
-  font-size: 0.875rem;
+  font-size: 14px;
   padding: 0.4rem 0.8rem;
   border: 1px solid var(--border);
   background: var(--bg);
@@ -532,7 +432,7 @@ section {
 /* ===== RESPONSIVE ===== */
 @media (max-width: 640px) {
   .page-container {
-    padding: 8vh 1.25rem 3rem;
+    padding: 2rem 1.5rem;
   }
 
   h1 {
@@ -540,48 +440,24 @@ section {
   }
 
   h2 {
-    font-size: 1.35rem;
-  }
-
-  .hero-blurb {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 
   .theme-toggle {
-    top: 1rem;
-    right: 1rem;
-    width: 2.25rem;
-    height: 2.25rem;
-  }
-
-  .main-nav {
-    gap: var(--space-sm);
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 1.75rem;
+    height: 1.75rem;
   }
 
   .blog-item a {
     grid-template-columns: 1fr;
-    gap: var(--space-xs);
+    gap: 0.25rem;
   }
 
   .post-number,
   .post-date {
     display: inline-block;
-    margin-right: var(--space-xs);
-  }
-
-  .work-item {
-    grid-template-columns: 1fr;
-  }
-
-  .work-date {
-    grid-column: 1 / 2;
-    grid-row: 3;
-    text-align: left;
-  }
-}
-
-@media (min-width: 641px) and (max-width: 1024px) {
-  .page-container {
-    padding: 12vh 2rem 4rem;
+    margin-right: 0.5rem;
   }
 }
