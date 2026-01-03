@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <title>Alex Boyko</title>
+  </head>
+  <body>
+    <div id="hero">
+      <div id="logo">
+        <div class="logo-box">
+          <div class="circle"></div>
+          <div class="square"></div>
+          <div class="triangle"></div>
+          <div class="pfp" onclick="toggleDarkMode()"></div>
+        </div>
+      </div>
+      <h1>Alexander Boyko</h1>
+      <p>
+        Programmer 🧑‍💻 Enjoy all aspects of designing and building out new
+        products.
+      </p>
+      <div>
+        <a href="./docs/AlexanderBoyko_CV_Jan2025.pdf" target="_blank"
+          >resume</a
+        >
+        -
+        <a href="https://linkedin.com/in/aboyko2003" target="_blank"
+          >linkedin</a
+        >
+        -
+        <a href="https://github.com/nexusboyko" target="_blank">github</a>
+      </div>
+    </div>
+    <!--  -->
+    <h1>work</h1>
+    <section>
+      <div>
+        <p>
+          <span>
+            <a href="" target="_blank">Visa, Inc.</a>
+          </span>
+          — Software Engineer <br />
+          <small>2025-Present</small>
+        </p>
+      </div>
+      <div>
+        <p>
+          <span>
+            <a href="" target="_blank">Akvelon, Inc.</a>
+          </span>
+          — Software Development Intern <br />
+          <small>Summer 2023</small>
+        </p>
+      </div>
+    </section>
+    <!--  -->
+    <h1>education</h1>
+    <section>
+      <div>
+        <p>
+          <span>
+            <a href="https://www.cs.washington.edu/" target="_blank"
+              >University of Washington, Seattle
+            </a>
+            — Computer Science, B.S.
+          </span>
+          <!--  -->
+          <br />
+          <small>2023-2025</small>
+        </p>
+      </div>
+      <div>
+        <p>
+          <span>
+            <a href="https://www.ucdavis.edu/" target="_blank"
+              >University of California, Davis</a
+            >
+            <em>(Transferred)</em> — Computer Science, B.S.
+          </span>
+          <!--  -->
+          <br />
+          <small>2021-2023</small>
+        </p>
+      </div>
+    </section>
+    <!--  -->
+    <h1>projects</h1>
+    <section id="demos" class="">
+      <div class="card">
+        <img
+          src="./images/curatedlist.io/curatedlisthome.png"
+          alt="curatedlist"
+          class="card-image"
+        />
+        <div class="card-content">
+          <h3>
+            <a href="https://curatedlist.io" target="_blank" class="card-link"
+              >curatedlist.io</a
+            >
+          </h3>
+          <p>Collaborative multi-media organization and sharing platform.</p>
+        </div>
+      </div>
+      <!--  -->
+      <div class="card">
+        <img
+          src="./images/studyassistant/study_assistant_1.png"
+          alt="study assistant"
+          class="card-image"
+        />
+        <div class="card-content">
+          <h3>
+            <a
+              href="https://study-assistant.akvelon.net/"
+              target="_blank"
+              class="card-link"
+            >
+              AI Study Assistant
+            </a>
+          </h3>
+          <p>
+            Designed, built, and deployed a real-time chat application which
+            provided an interactive study assistant powered by OpenAI.
+          </p>
+          <p>
+            Led end-to-end frontend development and collaborated with a partner
+            team on backend implementation.
+          </p>
+          <p>
+            Released and made publicly available for high schools and
+            universities.
+          </p>
+        </div>
+      </div>
+      <!--  -->
+      <div class="card">
+        <img
+          src="./images/other/courser.png"
+          alt="courser"
+          class="card-image"
+        />
+        <div class="card-content">
+          <h3>
+            <a
+              href="https://github.com/nexusboyko/courser"
+              target="_blank"
+              class="card-link"
+              >courser</a
+            >
+          </h3>
+          <p>Crawler which organizes course websites into navigable tree.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img
+          src="./images/other/icon-carousel-gif-draggable.gif"
+          alt="icon carousel"
+          class="card-image"
+        />
+        <div class="card-content">
+          <h3>
+            <a
+              href="https://github.com/nexusboyko/icon-carousel"
+              target="_blank"
+              class="card-link"
+            >
+              Icon Carousel
+            </a>
+          </h3>
+          <p>
+            A simple vanilla JS script for an interactive rotating icon
+            carousel.
+          </p>
+          <p>
+            The current version of the carousel works with icons from the
+            iconify-icon library.
+          </p>
+        </div>
+      </div>
+      <div class="card wip">
+        <img src="./images/withyou.png" alt="withyou" class="card-image" />
+        <div class="card-content">
+          <h3>
+            <a
+              href="https://github.com/nexusboyko/withyou"
+              target="_blank"
+              class="card-link"
+              >withyou</a
+            >
+          </h3>
+          <p>
+            Electron desktop "widget" for quick-access tools like timers, notes,
+            etc.
+          </p>
+        </div>
+      </div>
+      <div class="card wip">
+        <img src="./images/3place.png" alt="3place" class="card-image" />
+        <div class="card-content">
+          <h3>
+            <a href="#" target="_blank" class="card-link">3rd place</a>
+          </h3>
+          <p>Vite app using web sockets to create temporary chatrooms.</p>
+        </div>
+      </div>
+    </section>
+    <script>
+      function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+      }
+    </script>
+  </body>
+</html>

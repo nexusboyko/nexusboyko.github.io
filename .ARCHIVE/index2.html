@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="index.css" />
+    <title>Alex Boyko</title>
+  </head>
+
+  <body>
+    <section
+      id="hero"
+      class="flex flex-col justify-center items-center gap-y-8"
+    >
+      <div class="w-full flex justify-center items-center">
+        <div class="logo-box">
+          <div class="circle"></div>
+          <div class="square"></div>
+          <div class="triangle"></div>
+          <div class="pfp"></div>
+        </div>
+      </div>
+      <p class="m-0 p-0 text-center">
+        Programmer // B.S. in Computer Science @ UW, Seattle. <br />
+        Enjoy all aspects of designing and building out new products. <br />
+      </p>
+      <div class="flex items-center w-1/2 justify-around p-0 m-0 text-blue-700">
+        <a href="#work" class="underline">work</a>
+        <a
+          href="./docs/AlexanderBoyko_CV_Jan2025.pdf"
+          target="_blank"
+          class="underline"
+          >resume</a
+        >
+        <a
+          href="https://linkedin.com/in/aboyko2003"
+          target="_blank"
+          class="underline"
+          >linkedin</a
+        >
+        <a
+          href="https://github.com/nexusboyko"
+          target="_blank"
+          class="underline"
+          >github</a
+        >
+      </div>
+    </section>
+    <section
+      id="work"
+      class="flex flex-col justify-center items-center gap-y-8"
+    >
+      <h1>work</h1>
+      <!-- <p class="blurb text-center"></p> -->
+      <div class="work-card flex flex-col items-center text-center gap-4 pb-5 border-b">
+        <img src="./images/visa.png" alt="" class="h-8 w-auto" />
+        <div>
+          <a href="https://www.cs.washington.edu/" target="_blank"
+            >Software Engineer</a
+          >
+          <h2>Visa</h2>
+          <p>2025-Present</p>
+        </div>
+      </div>
+      <div class="work-card flex flex-col items-center text-center gap-4">
+        <img src="./images/akvelon.svg" alt="" class="h-8 w-auto" />
+        <div>
+          <a>Software Development Intern</a>
+          <h2>Akvelon</h2>
+          <p>Summer 2023</p>
+        </div>
+      </div>
+
+      <h1>education</h1>
+      <div class="work-card flex flex-col items-center text-center gap-4 pb-5 border-b">
+        <img src="./images/uw.png" alt="" class="h-8 w-auto" />
+        <div>
+          <a href="https://www.cs.washington.edu/" target="_blank"
+            >Bachelor's of Science</a
+          >
+          <h2>University of Washington, Seattle</h2>
+          <p>2023-2025</p>
+        </div>
+      </div>
+      <div class="work-card flex flex-col items-center text-center gap-4">
+        <img src="./images/uc.svg" alt="" class="h-8 w-auto" />
+        <div>
+          <a hrefz="https://www.ucdavis.edu/" target="_blank"
+            >Bachelor's of Science</a
+          >
+          <h2>University of California, Davis</h2>
+          <p>2021-2023</p>
+        </div>
+      </div>
+    </section>
+    <section id="demos" class="flex flex-col justify-center items-center gap-y-8">
+      <h1>demos</h1>
+      <p class="blurb text-center italic text-sm">
+        I love building small demos to explore creative ideas and experiment
+        with new tools. <br />
+        Like something? Feel free to reach out or build off what I have!
+      </p>
+      <div class="gallery">
+        <div class="demo-card">
+          <img
+            src="./images/curatedlist.io/curatedlisthome.png"
+            alt="curatedlist"
+          />
+          <h3>
+            <a href="https://curatedlist.io" target="_blank">curatedlist.io</a>
+          </h3>
+          <p>Collaborative multi-media orgnaization and sharing platform.</p>
+        </div>
+        <div class="demo-card">
+          <img src="./images/other/courser.png" alt="courser" />
+          <h3>
+            <a href="https://github.com/nexusboyko/courser" target="_blank"
+              >courser</a
+            >
+          </h3>
+          <p>Crawler which organizes course websites into navigable tree.</p>
+        </div>
+        <div class="demo-card">
+          <img src="" alt=" " />
+          <h3>
+            <a href="https://github.com/nexusboyko/withyou" target="_blank"
+              >withyou</a
+            >
+          </h3>
+          <p>
+            Electron desktop "widget" for quick-access tools like timers, notes,
+            etc.
+          </p>
+        </div>
+        <div class="demo-card">
+          <img src="" alt=" " />
+          <h3><a href="#" target="_blank">3place</a></h3>
+          <p>Vite app using web sockets to create temporary chatrooms</p>
+        </div>
+        <!-- <div class="demo-card">
+          <img src="" alt=" " />
+          <h3><a>Web(Apps) Golf</a></h3>
+          <p>
+            Online version of the
+            <a
+              class="underline text-blue-600"
+              href="https://gladdendesign.com/products/paper-apps-golf"
+              >PaperApps golf notebook</a
+            >
+          </p>
+        </div> -->
+        <!-- <div class="demo-card">
+          <img src="" alt=" " />
+          <h3><a href="#" target="_blank">Thinker's Folie</a></h3>
+          <p>Blog made using Go and static HTML/JS.</p>
+        </div>
+      </div> -->
+    </section>
+  </body>
+</html>
+
+<!-- <body>
+    <main>
+      <div id="hero">
+        <div id="about">
+          <img id="profile" src="./images/profile1.jpg" alt="pfp" />
+          <div>
+            <p id="name">Alex(ander) Boyko</p>
+            <p>
+              Studied computer science at the <span style="color: #6E9091;">Unversity of Washington, Seattle</span>.
+              <br />
+              Leetcodin', writing fullstack applications, and self-studying LLMs.
+            </p>
+            
+            <ul id="links">
+              <a
+                id="projects-peek"
+                href="#my-work"
+              >
+                Work
+              </a>
+      
+              <a
+                id="resume"
+                href="docs/AlexanderBoyko_CV_Jan2025.pdf"
+                target="_blank"
+                >Resume</a
+              >
+      
+              <a id="github" href="https://github.com/nexusboyko" target="_blank"
+                >GitHub</a
+              >
+              <a
+                id="linkedin"
+                href="https://www.linkedin.com/in/aboyko2003/"
+                target="_blank"
+                >LinkedIn</a
+              >
+            </ul>
+          </div>
+        </div>
+        
+      </div>
+    </main>
+
+    <div id="my-work" style="margin: 1rem 0 1rem 0; text-align: center">
+      ...
+    </div>
+    <ul id="projects">
+      <h1 id="projects-title">Professional experience & projects</h1>
+
+      <li>
+        <img
+          src="./images/curatedlist.io/curatedlisthome.png"
+          alt="curatedlist.io"
+        />
+        <div id="project-desc">
+          <a href="https://curatedlist.io/">curatedlist.io</a>
+          <div>
+            <p>
+              Co-creator and developer of an application serving as an
+              all-in-one collaboration space that allows users to create, share,
+              and track multimedia learning materials.
+            </p>
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <img
+          src="./images/studyassistant/study_assistant_1.png"
+          alt="study assistant"
+        />
+        <div id="project-desc">
+          <a href="https://study-assistant.akvelon.net/">AI Study Assistant</a>
+          <div>
+            <p>
+              Designed, built, and deployed a real-time chat application which
+              provided an interactive study assistant powered by OpenAI.
+            </p>
+            <p>
+              Led end-to-end frontend development, worked with partner team on
+              backend implementation.
+            </p>
+            <p>
+              Released and made publicly available for high schools and
+              universities.
+            </p>
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <img src="./images/other/courser.png" alt="courser" />
+        <div id="project-desc">
+          <a href="https://github.com/nexusboyko/courser">Courser</a>
+          <div>
+            <p>
+              A crawler that finds all available resources from a specificed
+              link, organizing discovered links in a directory structure you can
+              easily navigate.
+            </p>
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <img
+          src="./images/other/icon-carousel-gif-draggable.gif"
+          alt="icon carousel"
+        />
+        <div id="project-desc">
+          <a href="https://github.com/nexusboyko/icon-carousel"
+            >Icon Carousel</a
+          >
+          <div>
+            <p>
+              A simple vanilla JS script for an interactive rotating icon
+              carousel.
+            </p>
+            <p>
+              The current version of the carousel works with icons from the
+              iconify-icon library.
+            </p>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </body> -->

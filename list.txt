@@ -1,0 +1,20 @@
+itle">Visa, Software Engineer</span>
+                <span class="work-date">May 2025–Present</span>
+              </div>
+              <ul class="work-desc">
+                <li class="work-desc-item">Built first end-to-end international merchant dashboard</li>
+                <li class="work-desc-item">Held multiple key responsibilities in full-stack development and DevOps, managing AWS infrastructure and CI/CD pipelines</li>
+                <li class="work-desc-item">Coordinated across teams to drive changes and regularly presented deliverables to leadership</li>
+                <li class="work-desc-item">Independently integrated open-source AI prototyping tool with internal services, reducing time-to-deployment from design stage</li>
+              </ul>
+            </li>
+            <li class="work-item">
+              <div class="work-header">
+                <span class="work-title">Akvelon, Inc. - Software Development Intern</span>
+                <span class="work-date">2023</span>
+              </div>
+              <ul class="work-desc">
+                <li class="work-desc-item">Designed, implemented, and deployed a full-cycle software development project to production</li>
+                <li class="work-desc-item">Led frontend development team, co-developed backend APIs, conducted peer code reviews, and supervised shared source code repository</li>
+                <li class="work-desc-item">Managed project delivery using Agile methodology and story-boarding; presented daily stand-ups</li>
+              </ul>
