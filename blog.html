@@ -3,47 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Alex Boyko's Blog">
   <title>Blog - Alex Boyko</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="favicon.ico">
-
-  <!-- Prevent theme flash -->
-  <script>
-    (function() {
-      const theme = localStorage.getItem('theme') ||
-                    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      document.documentElement.classList.toggle('dark', theme === 'dark');
-    })();
-  </script>
 </head>
 <body>
-  <div class="page-container blog-page">
-    <!-- Theme toggle -->
-    <button class="theme-toggle" aria-label="Toggle dark mode">
-      <span class="theme-icon"></span>
-    </button>
+  <div class="container blog-page">
+    <a href="index.html" class="back-link">← Home</a>
 
-    <!-- Navigation back to home -->
-    <nav class="page-nav">
-      <a href="index.html">← Home</a>
-    </nav>
-
-    <!-- Blog header -->
     <header class="blog-header">
       <h1>Blog</h1>
     </header>
 
-    <!-- Blog post list (numbered, descending) -->
-    <div id="blog-list" class="blog-list">
-      <p class="empty-state">Loading posts...</p>
+    <div id="posts-container">
+      <p style="text-align: center; color: #999;">Loading posts...</p>
     </div>
 
-    <!-- Blog post view (hidden by default) -->
-    <div id="post-view" class="post-view" style="display: none;"></div>
+    <!-- Admin login (shows on Ctrl+Shift+B) -->
+    <div id="admin-panel" style="display: none;">
+      <form id="admin-form" class="admin-form">
+        <h2>New Post</h2>
+        <input type="text" id="title" placeholder="Title" required>
+        <textarea id="content" placeholder="Content (Markdown supported)" required></textarea>
+        <input type="file" id="image" accept="image/*">
+        <button type="submit">Publish</button>
+      </form>
+    </div>
   </div>
 
-  <script src="theme.js"></script>
-  <script src="blog.js"></script>
+  <script src="blog-client.js"></script>
 </body>
 </html>
