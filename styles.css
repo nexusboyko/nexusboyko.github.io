@@ -13,9 +13,10 @@ body {
   line-height: 1.65;
   color: #333;
   background: #f7f7f5;
-  max-width: 650px;
+  max-width: 550px;
   margin: 0 auto;
   padding: 3rem 2rem;
+  text-align: center;
 }
 
 h1 {
@@ -31,13 +32,14 @@ h2 {
 }
 
 h3 {
-  font-size: 1rem;
-  font-weight: 600;
-  margin: 1.25rem 0 0.25rem;
+  font-size: 0.95rem;
+  font-weight: 400;
+  margin: 1.5rem 0 0.5rem;
 }
 
 p {
   margin: 0.5rem 0;
+  font-size: 14px;
 }
 
 a {
@@ -61,7 +63,20 @@ li {
 
 small {
   font-size: 13px;
-  color: #888;
+  color: #999;
+}
+
+section {
+  margin-top: 2.5rem;
+}
+
+nav {
+  margin: 1.5rem 0 2.5rem;
+  font-size: 14px;
+}
+
+nav a {
+  margin: 0 0.5rem;
 }
 
 @media (max-width: 640px) {
