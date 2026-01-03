@@ -1,6 +1,5 @@
 /* Minimal Personal Site */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600&display=swap');
-@import url('./helvetica.css');
 
 * {
   margin: 0;
@@ -9,184 +8,68 @@
 }
 
 body {
-  /* font-family: 'Helvetica Neue', Arial, sans-serif; */
   font-family: 'Noto Serif', Georgia, serif;
-  font-size: 14px;
-  line-height: 1.6;
+  font-size: 15px;
+  line-height: 1.65;
   color: #333;
   background: #f7f7f5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  padding: 2rem;
-}
-
-.container {
-  max-width: 550px;
-  text-align: center;
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
 }
 
 h1 {
-  font-family: 'Noto Serif', Georgia, serif;
-  font-size: 1.8rem;
+  font-size: 1.75rem;
   font-weight: 400;
-  margin-bottom: 0.75rem;
-  color: #1a1a1a;
+  margin-bottom: 0.5rem;
 }
 
 h2 {
-  font-family: 'Noto Serif', Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 2.5rem 0 1rem;
+}
+
+h3 {
   font-size: 1rem;
   font-weight: 600;
-  margin: 2rem 0 0.75rem;
-  color: #1a1a1a;
+  margin: 1.25rem 0 0.25rem;
 }
 
-.bio {
-  color: #666;
-  margin-bottom: 1.5rem;
-  font-size: 14px;
+p {
+  margin: 0.5rem 0;
 }
 
-nav {
-  margin: 1.5rem 0;
-  font-size: 13px;
-}
-
-nav a {
+a {
   color: #4a90e2;
   text-decoration: none;
-  margin: 0 0.4rem;
+  border-bottom: 1px dotted #4a90e2;
 }
 
-nav a:hover {
-  opacity: 0.7;
+a:hover {
+  border-bottom-style: solid;
 }
 
-section {
-  margin-bottom: 1.5rem;
-}
-
-section p {
-  margin: 0.4rem 0;
-  color: #555;
-  font-size: 13px;
-}
-
-section a {
-  color: #4a90e2;
-  text-decoration: none;
-}
-
-section a:hover {
-  text-decoration: underline;
-}
-
-/* Blog styles */
-.blog-page {
-  text-align: left;
-}
-
-.blog-header {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.posts-list {
+ul {
   list-style: none;
   padding: 0;
 }
 
-.post-item {
-  margin-bottom: 1.5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid #e0e0de;
+li {
+  margin: 0.75rem 0;
 }
 
-.post-item:last-child {
-  border-bottom: none;
-}
-
-.post-link {
-  text-decoration: none;
-  color: #1a1a1a;
-  display: block;
-}
-
-.post-title {
-  font-family: 'Noto Serif', Georgia, serif;
-  font-size: 15px;
-  margin-bottom: 0.25rem;
-}
-
-.post-date {
-  font-size: 12px;
-  color: #999;
-}
-
-.post-content {
-  margin: 1.5rem 0;
-  line-height: 1.7;
-}
-
-.post-content img {
-  max-width: 100%;
-  height: auto;
-  margin: 1rem 0;
-}
-
-.back-link {
+small {
   font-size: 13px;
-  color: #4a90e2;
-  text-decoration: none;
-  margin-bottom: 1rem;
-  display: inline-block;
-}
-
-/* Admin form */
-.admin-form {
-  margin: 2rem 0;
-  padding: 1.5rem;
-  background: #fff;
-  border: 1px solid #e0e0de;
-}
-
-.admin-form input,
-.admin-form textarea {
-  width: 100%;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ddd;
-  font-family: inherit;
-  font-size: 13px;
-}
-
-.admin-form textarea {
-  min-height: 150px;
-  resize: vertical;
-}
-
-.admin-form button {
-  padding: 0.5rem 1rem;
-  background: #4a90e2;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-size: 13px;
-}
-
-.admin-form button:hover {
-  opacity: 0.9;
+  color: #888;
 }
 
 @media (max-width: 640px) {
-  h1 {
-    font-size: 1.5rem;
+  body {
+    padding: 2rem 1.5rem;
   }
 
-  nav a {
-    display: block;
-    margin: 0.5rem 0;
+  h1 {
+    font-size: 1.5rem;
   }
 }

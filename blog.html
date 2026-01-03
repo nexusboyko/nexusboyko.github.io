@@ -3,38 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Blog - Alex Boyko</title>
+  <title>Blog — Alex Boyko</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="favicon.ico">
-
-  <!-- TinyMCE -->
-  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 <body>
-  <div class="container blog-page">
-    <a href="index.html" class="back-link">← Home</a>
+  <nav><a href="index.html">← Home</a></nav>
 
-    <header class="blog-header">
-      <h1>Blog</h1>
-    </header>
+  <header>
+    <h1>Blog</h1>
+  </header>
 
-    <div id="posts-container">
-      <p style="text-align: center; color: #999;">Loading posts...</p>
-    </div>
+  <div id="posts"></div>
 
-    <!-- Admin panel (Ctrl+Shift+B) -->
-    <div id="admin-panel" style="display: none;">
-      <form id="admin-form" class="admin-form" enctype="multipart/form-data">
-        <h2>New Post</h2>
-        <input type="text" id="title" placeholder="Title" required>
-        <textarea id="editor"></textarea>
-        <input type="file" id="image" accept="image/*">
-        <div style="margin-top: 1rem;">
-          <button type="submit">Publish</button>
-          <button type="button" id="cancel-btn" style="background: #999;">Cancel</button>
-        </div>
-      </form>
-    </div>
+  <!-- Admin panel (Ctrl+Shift+B) -->
+  <div id="admin" style="display:none;">
+    <h2>New Post</h2>
+    <form id="post-form">
+      <p><input type="text" id="title" placeholder="Title" required style="width:100%;padding:0.5rem;border:1px solid #ddd;font-family:inherit;"></p>
+      <p><textarea id="content" placeholder="Content (HTML allowed)" required style="width:100%;min-height:200px;padding:0.5rem;border:1px solid #ddd;font-family:inherit;"></textarea></p>
+      <p><input type="file" id="image" accept="image/*"></p>
+      <button type="submit" style="padding:0.5rem 1rem;background:#4a90e2;color:white;border:none;cursor:pointer;">Publish</button>
+      <button type="button" id="cancel" style="padding:0.5rem 1rem;background:#999;color:white;border:none;cursor:pointer;margin-left:0.5rem;">Cancel</button>
+    </form>
   </div>
 
   <script src="blog-client.js"></script>

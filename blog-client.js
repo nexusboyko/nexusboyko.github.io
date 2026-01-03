@@ -1,169 +1,93 @@
-// Blog client - file-based storage
+// Simple blog client
 const PASSWORD = 'alexboyko2026';
-let editor;
 
-// Initialize TinyMCE when admin panel opens
-function initEditor() {
-  if (editor) return;
-
-  tinymce.init({
-    selector: '#editor',
-    height: 300,
-    menubar: false,
-    plugins: 'lists link image code',
-    toolbar: 'undo redo | bold italic | bullist numlist | link image | code',
-    content_style: 'body { font-family: Helvetica, Arial, sans-serif; font-size: 14px; }',
-    setup: (ed) => {
-      editor = ed;
-    }
-  });
-}
-
-// Load posts from server
 async function loadPosts() {
   try {
     const res = await fetch('/api/posts');
     return await res.json();
-  } catch (error) {
-    console.error('Failed to load posts:', error);
+  } catch {
     return [];
   }
 }
 
-// Display posts
 async function displayPosts() {
   const posts = await loadPosts();
-  const container = document.getElementById('posts-container');
+  const container = document.getElementById('posts');
 
   if (posts.length === 0) {
-    container.innerHTML = '<p style="text-align: center; color: #999;">No posts yet.</p>';
+    container.innerHTML = '<p style="color:#999;">No posts yet.</p>';
     return;
   }
 
-  container.innerHTML = `
-    <ul class="posts-list">
-      ${posts.map(post => `
-        <li class="post-item">
-          <a href="#${post.id}" class="post-link" onclick="showPost('${post.id}'); return false;">
-            <div class="post-title">${escapeHtml(post.title)}</div>
-            <div class="post-date">${new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
-          </a>
-        </li>
-      `).join('')}
-    </ul>
+  container.innerHTML = posts.map(post => `
+    <article style="margin:2rem 0;padding-bottom:2rem;border-bottom:1px solid #e0e0de;">
+      <h3><a href="#${post.id}" onclick="showPost('${post.id}');return false;">${esc(post.title)}</a></h3>
+      <small>${new Date(post.date).toLocaleDateString('en-US', {year:'numeric',month:'long',day:'numeric'})}</small>
+    </article>
+  `).join('');
+}
+
+async function showPost(id) {
+  const res = await fetch(`/api/posts/${id}`);
+  const post = await res.json();
+
+  document.getElementById('posts').innerHTML = `
+    <p><a href="#" onclick="displayPosts();return false;">← Back</a></p>
+    <article>
+      <h2>${esc(post.title)}</h2>
+      <p><small>${new Date(post.date).toLocaleDateString('en-US', {year:'numeric',month:'long',day:'numeric'})}</small></p>
+      ${post.image ? `<p><img src="${post.image}" style="max-width:100%;margin:1rem 0;"></p>` : ''}
+      <div>${post.content}</div>
+      ${localStorage.getItem('auth') ? `<p style="margin-top:2rem;"><button onclick="deletePost('${post.id}')" style="padding:0.5rem 1rem;background:#e74c3c;color:white;border:none;cursor:pointer;">Delete</button></p>` : ''}
+    </article>
   `;
 }
 
-// Show single post
-async function showPost(id) {
-  try {
-    const res = await fetch(`/api/posts/${id}`);
-    const post = await res.json();
-
-    const container = document.getElementById('posts-container');
-    container.innerHTML = `
-      <a href="#" class="back-link" onclick="displayPosts(); return false;">← Back to posts</a>
-      <article>
-        <h2>${escapeHtml(post.title)}</h2>
-        <p class="post-date">${new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
-        <div class="post-content">
-          ${post.image ? `<img src="${post.image}" alt="" style="max-width: 100%; margin: 1rem 0;">` : ''}
-          ${post.content}
-        </div>
-        ${isAdmin() ? `
-          <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e0e0de;">
-            <button onclick="deletePost('${post.id}')" style="padding: 0.5rem 1rem; background: #e74c3c; color: white; border: none; cursor: pointer;">Delete Post</button>
-          </div>
-        ` : ''}
-      </article>
-    `;
-  } catch (error) {
-    console.error('Failed to load post:', error);
-  }
-}
-
-// Delete post
 async function deletePost(id) {
   if (!confirm('Delete this post?')) return;
-
-  try {
-    await fetch(`/api/posts/${id}`, { method: 'DELETE' });
-    displayPosts();
-  } catch (error) {
-    alert('Failed to delete post');
-  }
+  await fetch(`/api/posts/${id}`, {method:'DELETE'});
+  displayPosts();
 }
 
-// Check if admin
-function isAdmin() {
-  return localStorage.getItem('blog_auth') === 'true';
-}
-
-// Escape HTML
-function escapeHtml(text) {
+function esc(text) {
   const div = document.createElement('div');
   div.textContent = text;
   return div.innerHTML;
 }
 
-// Admin panel
-document.addEventListener('keydown', (e) => {
+// Admin
+document.addEventListener('keydown', e => {
   if (e.ctrlKey && e.shiftKey && e.key === 'B') {
     e.preventDefault();
-
-    if (!isAdmin()) {
+    if (!localStorage.getItem('auth')) {
       const pass = prompt('Password:');
-      if (pass !== PASSWORD) {
-        alert('Wrong password');
-        return;
-      }
-      localStorage.setItem('blog_auth', 'true');
+      if (pass !== PASSWORD) return alert('Wrong password');
+      localStorage.setItem('auth', '1');
     }
-
-    document.getElementById('admin-panel').style.display = 'block';
-    initEditor();
+    document.getElementById('admin').style.display = 'block';
   }
 });
 
-// Cancel button
-document.getElementById('cancel-btn')?.addEventListener('click', () => {
-  document.getElementById('admin-panel').style.display = 'none';
-  document.getElementById('admin-form').reset();
-  if (editor) editor.setContent('');
+document.getElementById('cancel')?.addEventListener('click', () => {
+  document.getElementById('admin').style.display = 'none';
+  document.getElementById('post-form').reset();
 });
 
-// Handle form submission
-document.getElementById('admin-form').addEventListener('submit', async (e) => {
+document.getElementById('post-form').addEventListener('submit', async e => {
   e.preventDefault();
 
   const formData = new FormData();
   formData.append('title', document.getElementById('title').value);
-  formData.append('content', editor.getContent());
+  formData.append('content', document.getElementById('content').value);
 
-  const imageFile = document.getElementById('image').files[0];
-  if (imageFile) {
-    formData.append('image', imageFile);
-  }
+  const img = document.getElementById('image').files[0];
+  if (img) formData.append('image', img);
 
-  try {
-    const res = await fetch('/api/posts', {
-      method: 'POST',
-      body: formData
-    });
+  await fetch('/api/posts', {method:'POST', body:formData});
 
-    if (res.ok) {
-      document.getElementById('admin-panel').style.display = 'none';
-      document.getElementById('admin-form').reset();
-      editor.setContent('');
-      displayPosts();
-      alert('Post published!');
-    } else {
-      alert('Failed to publish post');
-    }
-  } catch (error) {
-    alert('Failed to publish post');
-  }
+  document.getElementById('admin').style.display = 'none';
+  document.getElementById('post-form').reset();
+  displayPosts();
 });
 
-// Initial load
 displayPosts();
