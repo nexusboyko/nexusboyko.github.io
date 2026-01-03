@@ -3,85 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="keywords" content="Alex Boyko, software engineer, web developer, Visa, full stack developer">
-  <meta name="description" content="Alex Boyko - Software Engineer at Visa">
   <title>Alex Boyko</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="favicon.ico">
-
-  <!-- Prevent theme flash -->
-  <script>
-    (function() {
-      const theme = localStorage.getItem('theme') ||
-                    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      document.documentElement.classList.toggle('dark', theme === 'dark');
-    })();
-  </script>
 </head>
 <body>
-  <div class="page-container">
-    <!-- Theme toggle -->
-    <button class="theme-toggle" aria-label="Toggle dark mode">
-      <span class="theme-icon"></span>
-    </button>
-
-    <!-- Name (Noto Serif) -->
+  <div class="container">
     <h1>Alex Boyko</h1>
 
-    <!-- Bio (SF Mono, compact) -->
-    <p class="bio">
-      Software Engineer at Visa building international payments solutions.
-    </p>
+    <p class="bio">Software Engineer at Visa building international payments solutions</p>
 
-    <!-- Navigation (SF Mono) -->
     <nav>
-      <a href="blog.html">Blog</a> ·
-      <a href="./docs/AlexanderBoyko_CV_Jan2025.pdf" target="_blank">Resume</a> ·
-      <a href="https://github.com/nexusboyko" target="_blank">GitHub</a> ·
-      <a href="https://linkedin.com/in/aboyko2003" target="_blank">LinkedIn</a>
+      <a href="./docs/AlexanderBoyko_CV_Jan2025.pdf">Resume</a>
+      <a href="https://linkedin.com/in/aboyko2003">LinkedIn</a>
+      <a href="https://github.com/nexusboyko">GitHub</a>
+      <a href="blog.html">Blog</a>
     </nav>
 
-    <!-- Work -->
     <section>
       <h2>Work</h2>
-      <div class="content-list">
-        <div class="content-item">
-          <div class="item-title">Visa · Software Engineer</div>
-          <div class="item-meta">2025–Present</div>
-          <div class="item-desc">Building international payments solutions and merchant dashboards</div>
-        </div>
-        <div class="content-item">
-          <div class="item-title">Akvelon · Software Development Intern</div>
-          <div class="item-meta">2023</div>
-          <div class="item-desc">Full-stack development and Agile collaboration</div>
-        </div>
-      </div>
+      <p>Visa · Software Engineer · 2025–Present</p>
+      <p>Akvelon · SWE Intern · 2023</p>
     </section>
 
-    <!-- Projects -->
+    <section>
+      <h2>Education</h2>
+      <p>University of Washington · CS, B.S. · 2023-2025</p>
+      <p>UC Davis · CS, B.S. (Transferred) · 2021-2023</p>
+    </section>
+
     <section>
       <h2>Projects</h2>
-      <div class="content-list">
-        <div class="content-item">
-          <div class="item-title">curatedlist.io</div>
-          <div class="item-desc">Curated collection platform for discovering quality content</div>
-        </div>
-        <div class="content-item">
-          <div class="item-title">AI Study Assistant</div>
-          <div class="item-desc">Intelligent learning companion powered by machine learning</div>
-        </div>
-        <div class="content-item">
-          <div class="item-title">3place</div>
-          <div class="item-desc">Community platform for meaningful connections</div>
-        </div>
-        <div class="content-item">
-          <div class="item-title">courser</div>
-          <div class="item-desc">Course management and learning tool</div>
-        </div>
-      </div>
+      <p><a href="https://curatedlist.io">curatedlist.io</a> · Collaborative organization platform</p>
+      <p><a href="https://study-assistant.akvelon.net/">AI Study Assistant</a> · Real-time chat with OpenAI</p>
+      <p><a href="https://github.com/nexusboyko/courser">courser</a> · Course website crawler</p>
+      <p><a href="https://github.com/nexusboyko/withyou">withyou</a> · Electron desktop widget</p>
+      <p><a href="#">3place</a> · Temporary chatrooms with web sockets</p>
     </section>
   </div>
-
-  <script src="theme.js"></script>
 </body>
 </html>

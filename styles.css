@@ -1,483 +1,92 @@
-/* ===================================== */
-/* MINIMAL PERSONAL WEBSITE             */
-/* Design: Noto Serif (titles) + SF Mono (body) */
-/* Inspired by: Michael Andreuzza       */
-/* ===================================== */
-
-/* ===== FONT IMPORTS ===== */
+/* Minimal Personal Site */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600&display=swap');
 @import url('./sf.css');
 
-/* ===== CSS RESET ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ===== CSS VARIABLES ===== */
-:root {
-  /* Light theme (default) - Soft, gentle colors */
-  --bg: #f7f7f5;
-  --text-primary: #2a2a2a;
-  --text-secondary: #7a7a7a;
-  --accent: #4a90e2;
-  --border: #e0e0de;
-}
-
-:root.dark {
-  /* Dark theme */
-  --bg: #1a1a1a;
-  --text-primary: #e8e8e8;
-  --text-secondary: #999;
-  --accent: #6aa7f7;
-  --border: #2a2a2a;
-}
-
-/* ===== BASE STYLES - SF MONO FOR BODY ===== */
 body {
   font-family: 'SF Mono', Monaco, Consolas, monospace;
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--text-primary);
-  background: var(--bg);
-  text-align: center;
-  padding: 20px;
-  transition: background 0.3s ease, color 0.3s ease;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #2a2a2a;
+  background: #f7f7f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
 }
 
-/* ===== HEADINGS - NOTO SERIF ===== */
-h1, h2 {
-  font-family: 'Noto Serif', Georgia, serif;
-  font-weight: 400;
+.container {
+  max-width: 600px;
+  text-align: center;
 }
 
 h1 {
-  font-size: 2rem; /* 32px */
+  font-family: 'Noto Serif', Georgia, serif;
+  font-size: 2.5rem;
+  font-weight: 400;
   margin-bottom: 1rem;
-  letter-spacing: -0.01em;
+  color: #1a1a1a;
 }
 
 h2 {
-  font-size: 1.2rem; /* 19.2px */
-  margin: 2rem 0 0.5rem;
+  font-family: 'Noto Serif', Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin: 2.5rem 0 1rem;
+  color: #1a1a1a;
 }
 
-/* ===== LAYOUT ===== */
-.page-container {
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 3rem 2rem;
-  min-height: 100vh;
-}
-
-/* ===== BIO - SF MONO ===== */
 .bio {
-  font-size: 14px;
-  color: var(--text-secondary);
-  margin-bottom: 1.5rem;
-  max-width: 40ch;
-  margin-left: auto;
-  margin-right: auto;
+  color: #666;
+  margin-bottom: 2rem;
+  font-size: 15px;
 }
 
-/* ===== NAVIGATION - SF MONO ===== */
 nav {
   margin: 2rem 0;
-  font-size: 14px;
 }
 
 nav a {
-  color: var(--accent);
+  color: #4a90e2;
   text-decoration: none;
-  transition: opacity 0.2s ease;
+  margin: 0 0.5rem;
 }
 
 nav a:hover {
   opacity: 0.7;
 }
 
-/* ===== SECTIONS ===== */
 section {
-  margin-bottom: 3.5rem;
-}
-
-/* ===== CONTENT LISTS (WORK & PROJECTS) ===== */
-.content-list {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  margin-top: 1rem;
-}
-
-.content-item {
-  text-align: center;
-}
-
-.item-title {
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--text-primary);
-  margin-bottom: 0.25rem;
-}
-
-.item-meta {
-  font-size: 13px;
-  color: var(--text-secondary);
-  margin-bottom: 0.5rem;
-}
-
-.item-desc {
-  font-size: 14px;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  max-width: 50ch;
-  margin: 0 auto;
-}
-
-/* ===== THEME TOGGLE ===== */
-.theme-toggle {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  width: 2rem;
-  height: 2rem;
-  border: 1px solid var(--border);
-  background: transparent;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.2s ease, background 0.2s ease;
-}
-
-.theme-toggle:hover {
-  transform: scale(1.05);
-  background: var(--text-primary);
-  color: var(--bg);
-}
-
-.theme-icon::before {
-  content: '☀';
-}
-
-:root.dark .theme-icon::before {
-  content: '☾';
-}
-
-/* ===== BLOG PAGE STYLES ===== */
-.blog-page {
-  text-align: left;
-}
-
-.page-nav {
-  margin-bottom: 2rem;
-  text-align: center;
-}
-
-.page-nav a {
-  font-size: 14px;
-  color: var(--accent);
-  text-decoration: none;
-}
-
-.page-nav a:hover {
-  opacity: 0.7;
-}
-
-.blog-header {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.blog-header h1 {
-  font-size: 2rem;
-}
-
-/* Blog List */
-.blog-list {
-  list-style: none;
-  padding: 0;
-  margin: 2rem 0;
-}
-
-.blog-item {
-  margin-bottom: 1.5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border);
-}
-
-.blog-item:last-child {
-  border-bottom: none;
-}
-
-.blog-item a {
-  display: grid;
-  grid-template-columns: 2ch 9ch 1fr;
-  gap: 1rem;
-  align-items: baseline;
-  color: var(--text-primary);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.blog-item a:hover {
-  color: var(--accent);
-}
-
-.post-number,
-.post-date {
-  font-size: 14px;
-  color: var(--text-secondary);
-}
-
-.post-title {
-  font-family: 'Noto Serif', Georgia, serif;
-  font-size: 14px;
-  font-weight: 400;
-}
-
-/* Empty state */
-.empty-state {
-  color: var(--text-secondary);
-  font-style: italic;
-  text-align: center;
-  padding: 3rem 0;
-  font-size: 14px;
-}
-
-/* ===== BLOG POST VIEW ===== */
-.post-view {
-  margin-top: 3rem;
-}
-
-.blog-post {
-  margin-bottom: 3rem;
-}
-
-.post-header {
   margin-bottom: 2rem;
 }
 
-.post-header .post-date {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-size: 14px;
+section p {
+  margin: 0.5rem 0;
+  color: #555;
 }
 
-.post-header h2 {
-  font-family: 'Noto Serif', Georgia, serif;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  font-weight: 400;
-}
-
-.post-content {
-  font-size: 14px;
-  line-height: 1.7;
-  margin-bottom: 2rem;
-}
-
-.post-content p {
-  text-align: left;
-  margin-bottom: 1rem;
-}
-
-.post-image {
-  margin: 2rem 0;
-}
-
-.post-image img {
-  max-width: 100%;
-  height: auto;
-  border: 1px solid var(--border);
-}
-
-.back-link {
-  font-size: 14px;
-  display: inline-block;
-  margin-bottom: 1rem;
-  color: var(--accent);
+section a {
+  color: #4a90e2;
   text-decoration: none;
 }
 
-.back-link:hover {
-  opacity: 0.7;
+section a:hover {
+  text-decoration: underline;
 }
 
-/* ===== ADMIN MODAL ===== */
-#admin-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  padding: 1rem;
-}
-
-.modal-content {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  padding: 2rem;
-  max-width: 500px;
-  width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
-}
-
-.modal-content h2 {
-  font-family: 'Noto Serif', Georgia, serif;
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
-  font-weight: 400;
-}
-
-.form-group {
-  margin-bottom: 1.5rem;
-  text-align: left;
-}
-
-.form-group label {
-  display: block;
-  font-size: 14px;
-  margin-bottom: 0.5rem;
-  color: var(--text-primary);
-}
-
-.form-group input[type="text"],
-.form-group input[type="date"],
-.form-group textarea,
-.form-group input[type="file"] {
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid var(--border);
-  background: var(--bg);
-  color: var(--text-primary);
-  font-family: 'SF Mono', Monaco, Consolas, monospace;
-  font-size: 14px;
-}
-
-.form-group textarea {
-  min-height: 200px;
-  resize: vertical;
-  line-height: 1.6;
-}
-
-.help-text {
-  font-size: 12px;
-  color: var(--text-secondary);
-  margin-top: 0.5rem;
-  font-style: italic;
-}
-
-.current-image {
-  margin-top: 1rem;
-  padding: 1rem;
-  border: 1px solid var(--border);
-}
-
-.current-image img {
-  max-width: 200px;
-  height: auto;
-  display: block;
-  margin-bottom: 1rem;
-}
-
-.form-buttons {
-  display: flex;
-  gap: 0.5rem;
-  margin-top: 1.5rem;
-}
-
-.btn {
-  font-family: 'SF Mono', Monaco, Consolas, monospace;
-  font-size: 14px;
-  padding: 0.5rem 1rem;
-  border: 1px solid var(--border);
-  background: var(--bg);
-  color: var(--text-primary);
-  cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-
-.btn:hover {
-  background: var(--text-primary);
-  color: var(--bg);
-}
-
-.btn-primary {
-  background: var(--accent);
-  color: white;
-  border-color: var(--accent);
-}
-
-.btn-primary:hover {
-  background: var(--text-primary);
-  border-color: var(--text-primary);
-}
-
-.post-admin {
-  margin-top: 2rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--border);
-  display: flex;
-  gap: 0.5rem;
-}
-
-.btn-edit,
-.btn-delete {
-  font-family: 'SF Mono', Monaco, Consolas, monospace;
-  font-size: 14px;
-  padding: 0.4rem 0.8rem;
-  border: 1px solid var(--border);
-  background: var(--bg);
-  color: var(--text-primary);
-  cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-
-.btn-edit:hover,
-.btn-delete:hover {
-  background: var(--text-primary);
-  color: var(--bg);
-}
-
-/* ===== RESPONSIVE ===== */
 @media (max-width: 640px) {
-  .page-container {
-    padding: 2rem 1.5rem;
-  }
-
   h1 {
-    font-size: 1.75rem;
+    font-size: 2rem;
   }
 
-  h2 {
-    font-size: 1.1rem;
-  }
-
-  .theme-toggle {
-    top: 0.75rem;
-    right: 0.75rem;
-    width: 1.75rem;
-    height: 1.75rem;
-  }
-
-  .blog-item a {
-    grid-template-columns: 1fr;
-    gap: 0.25rem;
-  }
-
-  .post-number,
-  .post-date {
-    display: inline-block;
-    margin-right: 0.5rem;
+  nav a {
+    display: block;
+    margin: 0.5rem 0;
   }
 }
