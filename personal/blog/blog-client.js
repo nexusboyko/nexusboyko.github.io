@@ -82,36 +82,12 @@ const API_BASE = (function() {
 })();
 console.info('Using API base for admin:', API_BASE || '(same origin)');
 
-async function loadPosts() {
-  try {
-    // Load from static posts.json file (no server needed!)
-    const res = await fetch('/blog/posts.json');
-    return await res.json();
-  } catch (err) {
-    console.warn('Failed to load posts from posts.json', err);
-    return [];
-  }
-}
-
-async function displayPosts() {
-  const posts = await loadPosts();
-  const container = document.getElementById('posts');
-
-  if (posts.length === 0) {
-    return;
-  }
-
-  container.innerHTML = posts.map(post => {
-    const slug = post.slug || `post-${post.id}`;
-    return `<li style="font-size:12px;"><a href="${slug}.html">${esc(post.title)}</a></li>`;
-  }).join('');
-}
-
 async function deletePost(id) {
   if (!confirm('Delete this post?')) return;
   const token = localStorage.getItem('blog_token');
   await fetch(`${API_BASE}/api/posts/${id}`, {method:'DELETE', headers: { Authorization: `Bearer ${token}` }});
-  displayPosts();
+  // Post list is updated by server in index.html - page refresh needed
+  window.location.reload();
 }
 
 function esc(text) {
@@ -181,14 +157,26 @@ document.getElementById('post-form').addEventListener('submit', async e => {
   if (img) formData.append('image', img);
 
   const token = localStorage.getItem('blog_token');
-  await fetch(`${API_BASE}/api/posts`, {method:'POST', body:formData, headers: { Authorization: `Bearer ${token}` }});
 
-  // Keep admin open, just reset form
-  const form = document.getElementById('post-form');
-  form.reset?.();
-  const editor = document.getElementById('editor');
-  if (editor) editor.innerHTML = '';
-  displayPosts();
+  try {
+    const response = await fetch(`${API_BASE}/api/posts`, {method:'POST', body:formData, headers: { Authorization: `Bearer ${token}` }});
+
+    if (!response.ok) {
+      const error = await response.json().catch(() => ({error: 'Unknown error'}));
+      console.error('Failed to create post:', response.status, error);
+      alert(`Failed to create post: ${error.error || response.statusText}`);
+      return;
+    }
+
+    const result = await response.json();
+    console.log('Post created successfully:', result);
+
+    // Post list is updated by server in index.html - page refresh needed
+    window.location.reload();
+  } catch (err) {
+    console.error('Error creating post:', err);
+    alert(`Error: ${err.message}`);
+  }
 });
 
 // Mobile / touch-friendly admin activation: hidden trigger button + multi-click header
@@ -227,5 +215,3 @@ if (localStorage.getItem('blog_token')) {
   const admin = document.getElementById('admin');
   if (admin) admin.style.display = 'block';
 }
-
-displayPosts();

@@ -62,7 +62,7 @@ function escapeHTML(text) {
 }
 
 function convertMarkdownToHTML(markdownContent) {
-  console.log('Converting markdown to HTML', markdownContent);
+  console.log("Converting markdown to HTML", markdownContent);
   let html = markdownContent
     .replace(/\r\n/g, "\n")
     .replace(/\r/g, "\n")
@@ -83,7 +83,10 @@ function convertMarkdownToHTML(markdownContent) {
       // If href does not start with a scheme, protocol-relative, slash, or hash,
       // but looks like a bare domain (contains a dot), prepend https:// so the
       // browser treats it as an absolute URL instead of a relative path.
-      if (!/^(?:[a-zA-Z][a-zA-Z0-9+.-]*:|\/|\/\/|#)/.test(href) && /\./.test(href)) {
+      if (
+        !/^(?:[a-zA-Z][a-zA-Z0-9+.-]*:|\/|\/\/|#)/.test(href) &&
+        /\./.test(href)
+      ) {
         href = `https://${href}`;
       }
 
@@ -137,6 +140,146 @@ function convertMarkdownToHTML(markdownContent) {
   return result.join("\n");
 }
 
+// CSV helper functions
+async function ensureCSV() {
+  const csvPath = path.join(__dirname, "posts.csv");
+  try {
+    await fs.access(csvPath);
+  } catch {
+    // Create with headers if doesn't exist
+    await fs.writeFile(csvPath, "id,slug,title,date,image\n", "utf8");
+  }
+}
+
+function escapeCSV(field) {
+  if (field == null) return "";
+  const str = String(field);
+  // Escape fields containing comma, quote, or newline
+  if (str.includes(",") || str.includes('"') || str.includes("\n")) {
+    return `"${str.replace(/"/g, '""')}"`;
+  }
+  return str;
+}
+
+async function appendToCSV(post) {
+  await ensureCSV();
+  const csvPath = path.join(__dirname, "posts.csv");
+
+  const row =
+    [
+      post.id,
+      post.slug,
+      escapeCSV(post.title),
+      post.date,
+      post.image || "",
+    ].join(",") + "\n";
+
+  await fs.appendFile(csvPath, row, "utf8");
+}
+
+async function readCSV() {
+  await ensureCSV();
+  const csvPath = path.join(__dirname, "posts.csv");
+  const content = await fs.readFile(csvPath, "utf8");
+
+  const lines = content.trim().split("\n");
+  if (lines.length <= 1) return []; // Only headers or empty
+
+  const posts = [];
+  for (let i = 1; i < lines.length; i++) {
+    const line = lines[i];
+    // Simple CSV parsing - split by comma, handle quoted fields
+    const fields = [];
+    let current = "";
+    let inQuotes = false;
+
+    for (let j = 0; j < line.length; j++) {
+      const char = line[j];
+
+      if (char === '"') {
+        if (inQuotes && line[j + 1] === '"') {
+          current += '"';
+          j++; // Skip next quote
+        } else {
+          inQuotes = !inQuotes;
+        }
+      } else if (char === "," && !inQuotes) {
+        fields.push(current);
+        current = "";
+      } else {
+        current += char;
+      }
+    }
+    fields.push(current); // Add last field
+
+    if (fields.length < 5) continue;
+
+    posts.push({
+      id: fields[0].trim(),
+      slug: fields[1].trim(),
+      title: fields[2].trim(),
+      date: fields[3].trim(),
+      image: fields[4].trim() || null,
+    });
+  }
+
+  return posts;
+}
+
+async function removeFromCSV(id) {
+  const posts = await readCSV();
+  const filtered = posts.filter((p) => p.id !== id);
+
+  const csvPath = path.join(__dirname, "posts.csv");
+  const rows = ["id,slug,title,date,image"];
+
+  for (const post of filtered) {
+    rows.push(
+      [
+        post.id,
+        post.slug,
+        escapeCSV(post.title),
+        post.date,
+        post.image || "",
+      ].join(",")
+    );
+  }
+
+  await fs.writeFile(csvPath, rows.join("\n") + "\n", "utf8");
+}
+
+async function updateBlogIndex() {
+  const posts = await readCSV();
+  // Sort by date, newest first
+  posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  const indexPath = path.join(__dirname, "blog", "index.html");
+  let html = await fs.readFile(indexPath, "utf8");
+
+  // Build the posts list HTML with delete buttons
+  const postsHTML = posts
+    .map(
+      (post) =>
+        `<li style="font-size:12px;display:flex;"><a href="${
+          post.id
+        }.html">${escapeHTML(post.title)}</a>&nbsp;<span onclick="deletePost('${
+          post.id
+        }')" style="cursor:pointer;color: red;">(del)</span></li>`
+    )
+    .join("\n      ");
+
+  // Replace the <ol id="posts">...</ol> content
+  // Match the opening tag, capture everything until closing tag
+  const olRegex = /(<ol id="posts">)([\s\S]*?)(<\/ol>)/;
+
+  html = html.replace(olRegex, (match, open, content, close) => {
+    return `${open}\n      ${postsHTML}\n    ${close}`;
+  });
+
+  await fs.writeFile(indexPath, html, "utf8");
+  console.log(`Updated blog index with ${posts.length} posts`);
+}
+
 async function compressImage(inputPath, outputPath) {
   try {
     await sharp(inputPath)
@@ -188,7 +331,7 @@ async function generatePostHTML(post) {
                   <body>
                     <h1>${escapeHTML(post.title)}</h1>
                     <p><small>${formattedDate}</p>
-                    <nav><a href="/blog/index.html">Blog</a></nav>
+                    <nav><a href="index.html">← Blog</a></nav>
                     <section>
                       <h2>-</h2>
                       ${imageHTML}
@@ -197,36 +340,13 @@ async function generatePostHTML(post) {
                   </body>
                 </html>`;
 
-  await fs.writeFile(path.join(blogDir, `${post.slug}.html`), html, "utf8");
-}
-
-async function generatePostsJSON() {
-  const postsDir = path.join(__dirname, "posts");
-  const blogDir = path.join(__dirname, "blog");
-
-  const files = await fs.readdir(postsDir);
-  const posts = await Promise.all(
-    files
-      .filter((f) => f.endsWith(".json"))
-      .map(async (file) => {
-        const content = await fs.readFile(path.join(postsDir, file), "utf8");
-        return JSON.parse(content);
-      })
-  );
-
-  posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-  await fs.writeFile(
-    path.join(blogDir, "posts.json"),
-    JSON.stringify(posts, null, 2),
-    "utf8"
-  );
+  await fs.writeFile(path.join(blogDir, `${post.id}.html`), html, "utf8");
 }
 
 // Create directories if they don't exist
 async function ensureDirectories() {
-  await fs.mkdir(path.join(__dirname, "posts"), { recursive: true });
   await fs.mkdir(path.join(__dirname, "images", "blog"), { recursive: true });
+  await ensureCSV(); // Ensure CSV index exists with headers
 }
 
 // GET endpoints removed - blog now uses static posts.json and individual HTML files
@@ -291,17 +411,14 @@ app.post(
         date: new Date().toISOString(),
       };
 
-      const postsDir = path.join(__dirname, "posts");
-      await fs.writeFile(
-        path.join(postsDir, `${id}.json`),
-        JSON.stringify(post, null, 2)
-      );
-
-      // Generate HTML file
+      // Generate HTML file for the post
       await generatePostHTML(post);
 
-      // Regenerate posts.json for static blog listing
-      await generatePostsJSON();
+      // Append to CSV index
+      await appendToCSV(post);
+
+      // Update blog/index.html with new post link
+      await updateBlogIndex();
 
       res.json(post);
     } catch (error) {
@@ -314,18 +431,19 @@ app.post(
 // Delete post
 app.delete("/api/posts/:id", requireAuth, async (req, res) => {
   try {
-    const postsDir = path.join(__dirname, "posts");
-    const postPath = path.join(postsDir, `${req.params.id}.json`);
-    const content = await fs.readFile(postPath, "utf8");
-    const post = JSON.parse(content);
+    // Find post in CSV to get slug and image path
+    const posts = await readCSV();
+    const post = posts.find((p) => p.id === req.params.id);
+
+    if (!post) {
+      return res.status(404).json({ error: "Post not found" });
+    }
 
     // Delete image if exists
     if (post.image) {
       try {
         const imagesBase = path.resolve(__dirname, "images", "blog");
-        const candidate = post.image.startsWith("/")
-          ? path.resolve(__dirname, "." + post.image)
-          : path.resolve(__dirname, post.image);
+        const candidate = path.resolve(__dirname, post.image);
         if (candidate.startsWith(imagesBase)) {
           await fs.unlink(candidate);
         }
@@ -335,21 +453,19 @@ app.delete("/api/posts/:id", requireAuth, async (req, res) => {
     }
 
     // Delete HTML file
-    if (post.slug) {
-      try {
-        const htmlPath = path.join(__dirname, "blog", `${post.slug}.html`);
-        await fs.unlink(htmlPath);
-        console.log(`Deleted HTML file: ${post.slug}.html`);
-      } catch (e) {
-        console.warn("Failed to delete HTML file:", e);
-      }
+    try {
+      const htmlPath = path.join(__dirname, "blog", `${post.id}.html`);
+      await fs.unlink(htmlPath);
+      console.log(`Deleted HTML file: ${post.id}.html`);
+    } catch (e) {
+      console.warn("Failed to delete HTML file:", e);
     }
 
-    // Delete JSON source
-    await fs.unlink(postPath);
+    // Remove from CSV index
+    await removeFromCSV(req.params.id);
 
-    // Regenerate posts.json for static blog listing
-    await generatePostsJSON();
+    // Update blog/index.html to remove post link
+    await updateBlogIndex();
 
     res.json({ success: true });
   } catch (error) {

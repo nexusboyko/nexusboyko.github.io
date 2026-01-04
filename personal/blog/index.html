@@ -1,66 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Blog — Alex Boyko</title>
-  <link rel="stylesheet" href="../styles.css">
-  <link rel="icon" href="../favicon.ico">
-</head>
-<body>
-  <h1 id="site-header">Blog</h1>
-  <p>Thoughts on things worth sharing :P</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Blog — Alex Boyko</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="icon" href="../favicon.ico" />
+  </head>
+  <body>
+    <h1 id="site-header">Blog</h1>
+    <p>Thoughts on things worth sharing :P</p>
 
-  <nav>
-    <a href="../index.html">Home</a>
-  </nav>
+    <nav>
+      <a href="../index.html">Home</a>
+    </nav>
 
-  <section>
-    <h2>-</h2>
-    <ol id="posts"></ol>
-  </section>
+    <section>
+      <h2>-</h2>
+      <ol id="posts">
+    </ol>
+    </section>
 
-  <!-- Admin panel (Ctrl+Shift+B) -->
-  <div id="admin" style="display:none;">
-    <h2>New Post</h2>
-    <form id="post-form">
-      <p><input type="text" id="title" placeholder="Title" required style="width:100%;padding:0.5rem;border:1px solid #ddd;font-family:inherit;"></p>
+    <!-- Admin panel (Ctrl+Shift+B) -->
+    <div id="admin" style="display: none">
+      <h2>New Post</h2>
+      <form id="post-form">
+        <p>
+          <input
+            type="text"
+            id="title"
+            placeholder="Title"
+            required
+            style="
+              width: 100%;
+              padding: 0.5rem;
+              border: 1px solid #ddd;
+              font-family: inherit;
+            "
+          />
+        </p>
 
-      <div id="editor" class="editor" aria-label="Post content editor" placeholder="Write your post…" spellcheck="false" autocomplete="off"></div>
-      <textarea id="content" name="content" style="display:none"></textarea>
+        <div
+          id="editor"
+          class="editor"
+          aria-label="Post content editor"
+          placeholder="Write your post…"
+          spellcheck="false"
+          autocomplete="off"
+        ></div>
+        <textarea id="content" name="content" style="display: none"></textarea>
 
-      <p><input type="file" id="image" accept="image/*"></p>
-      <button type="submit" style="padding:0.5rem 1rem;background:#4a90e2;color:white;border:none;cursor:pointer;">Publish</button>
-      <button type="button" id="cancel" style="padding:0.5rem 1rem;background:#999;color:white;border:none;cursor:pointer;margin-left:0.5rem;">Cancel</button>
-    </form>
-  </div>
+        <p><input type="file" id="image" accept="image/*" /></p>
+        <button
+          type="submit"
+          style="
+            padding: 0.5rem 1rem;
+            background: #4a90e2;
+            color: white;
+            border: none;
+            cursor: pointer;
+          "
+        >
+          Publish
+        </button>
+        <button
+          type="button"
+          id="cancel"
+          style="
+            padding: 0.5rem 1rem;
+            background: #999;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-left: 0.5rem;
+          "
+        >
+          Cancel
+        </button>
+      </form>
+    </div>
 
-  <!-- Load OverType from local node_modules when available, otherwise fallback to CDN -->
-  <script type="module">
-    (async () => {
-      try {
-        // prefer local package when `npm install` has been run
-        const mod = await import('/node_modules/overtype/dist/overtype.esm.js');
-        const OT = mod.default || mod.OverType || mod;
-        window.OverType = OT;
-        window.toolbarButtons = mod.toolbarButtons;
-        window.MarkdownParser = OT.MarkdownParser;  // MarkdownParser is attached to OverType class
-        console.log('OverType loaded locally:', !!OT, 'Parser:', !!OT.MarkdownParser);
-      } catch (e) {
+    <!-- Load OverType from local node_modules when available, otherwise fallback to CDN -->
+    <script type="module">
+      (async () => {
         try {
-          const mod = await import('https://unpkg.com/overtype?module');
+          // prefer local package when `npm install` has been run
+          const mod = await import(
+            "/node_modules/overtype/dist/overtype.esm.js"
+          );
           const OT = mod.default || mod.OverType || mod;
           window.OverType = OT;
           window.toolbarButtons = mod.toolbarButtons;
-          window.MarkdownParser = OT.MarkdownParser;
-          console.log('OverType loaded from CDN:', !!OT, 'Parser:', !!OT.MarkdownParser);
-        } catch (err) {
-          console.warn('OverType could not be loaded locally or from CDN.', err);
+          window.MarkdownParser = OT.MarkdownParser; // MarkdownParser is attached to OverType class
+          console.log(
+            "OverType loaded locally:",
+            !!OT,
+            "Parser:",
+            !!OT.MarkdownParser
+          );
+        } catch (e) {
+          try {
+            const mod = await import("https://unpkg.com/overtype?module");
+            const OT = mod.default || mod.OverType || mod;
+            window.OverType = OT;
+            window.toolbarButtons = mod.toolbarButtons;
+            window.MarkdownParser = OT.MarkdownParser;
+            console.log(
+              "OverType loaded from CDN:",
+              !!OT,
+              "Parser:",
+              !!OT.MarkdownParser
+            );
+          } catch (err) {
+            console.warn(
+              "OverType could not be loaded locally or from CDN.",
+              err
+            );
+          }
         }
-      }
-    })();
-  </script>
+      })();
+    </script>
 
-  <script src="blog-client.js"></script>
-</body>
+    <script src="blog-client.js"></script>
+  </body>
 </html>
