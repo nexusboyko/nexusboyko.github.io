@@ -1,9 +1,10 @@
 // Simple blog server with file storage
-const express = require('express');
-const multer = require('multer');
-const fs = require('fs').promises;
-const path = require('path');
-const cors = require('cors');
+const express = require("express");
+const multer = require("multer");
+const fs = require("fs").promises;
+const path = require("path");
+const cors = require("cors");
+const sharp = require("sharp");
 
 const app = express();
 const PORT = 3001;
@@ -22,118 +23,338 @@ function safeFilename(originalName) {
 }
 
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, path.join(__dirname, 'images', 'blog')),
-  filename: (req, file, cb) => cb(null, safeFilename(file.originalname))
+  destination: (req, file, cb) =>
+    cb(null, path.join(__dirname, "images", "blog")),
+  filename: (req, file, cb) => cb(null, safeFilename(file.originalname)),
 });
 
 function fileFilter(req, file, cb) {
-  if (!file.mimetype || !file.mimetype.startsWith('image/')) return cb(new Error('Only images allowed'));
+  if (!file.mimetype || !file.mimetype.startsWith("image/"))
+    return cb(new Error("Only images allowed"));
   cb(null, true);
 }
 
 const upload = multer({
   storage,
   fileFilter,
-  limits: { fileSize: 5 * 1024 * 1024 } // 5MB limit
+  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
 });
+
+// Utility functions for post generation
+function generateSlug(title) {
+  return title
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, "") // Remove special chars
+    .replace(/[\s_-]+/g, "-") // Convert spaces to hyphens
+    .replace(/^-+|-+$/g, ""); // Trim hyphens
+}
+
+function escapeHTML(text) {
+  const map = {
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#039;",
+  };
+  return text.replace(/[&<>"']/g, (m) => map[m]);
+}
+
+function convertMarkdownToHTML(markdownContent) {
+  console.log('Converting markdown to HTML', markdownContent);
+  let html = markdownContent
+    .replace(/\r\n/g, "\n")
+    .replace(/\r/g, "\n")
+    // Bold
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/__(.+?)__/g, "<strong>$1</strong>")
+    // Italic
+    .replace(/\*(.+?)\*/g, "<em>$1</em>")
+    .replace(/_(.+?)_/g, "<em>$1</em>")
+    // Links (support both [text](href) and inverted [href](text))
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (m, p1, p2) => {
+      // Support both [text](href) and inverted [href](text).
+      // Determine which part is the href by checking for common href patterns.
+      const looksLikeHref = /^(https?:\/\/)|^\/|\./.test(p1);
+      let href = looksLikeHref ? p1 : p2;
+      const text = looksLikeHref ? p2 : p1;
+
+      // If href does not start with a scheme, protocol-relative, slash, or hash,
+      // but looks like a bare domain (contains a dot), prepend https:// so the
+      // browser treats it as an absolute URL instead of a relative path.
+      if (!/^(?:[a-zA-Z][a-zA-Z0-9+.-]*:|\/|\/\/|#)/.test(href) && /\./.test(href)) {
+        href = `https://${href}`;
+      }
+
+      return `<a href="${escapeHTML(href)}">${escapeHTML(text)}</a>`;
+    })
+    // Lists - unordered
+    .replace(/^\s*[-*]\s+(.+)$/gm, "<li>$1</li>")
+    // Lists - ordered
+    .replace(/^\s*\d+\.\s+(.+)$/gm, "<li>$1</li>");
+
+  // Wrap list items in ul/ol
+  const lines = html.split("\n");
+  const result = [];
+  let inList = false;
+  let listType = null;
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+
+    if (line.includes("<li>")) {
+      // Determine list type from original markdown
+      const originalLine = markdownContent.split("\n")[i];
+      const currentListType = originalLine.match(/^\s*\d+\./) ? "ol" : "ul";
+
+      if (!inList) {
+        result.push(`<${currentListType}>`);
+        inList = true;
+        listType = currentListType;
+      } else if (listType !== currentListType) {
+        result.push(`</${listType}>`);
+        result.push(`<${currentListType}>`);
+        listType = currentListType;
+      }
+      result.push(line);
+    } else {
+      if (inList) {
+        result.push(`</${listType}>`);
+        inList = false;
+        listType = null;
+      }
+      if (line.trim()) {
+        result.push(`<p>${line}</p>`);
+      }
+    }
+  }
+
+  if (inList) {
+    result.push(`</${listType}>`);
+  }
+
+  return result.join("\n");
+}
+
+async function compressImage(inputPath, outputPath) {
+  try {
+    await sharp(inputPath)
+      .resize(1920, 1920, {
+        fit: "inside",
+        withoutEnlargement: true,
+      })
+      .jpeg({
+        quality: 85,
+        progressive: true,
+      })
+      .toFile(outputPath);
+
+    return outputPath;
+  } catch (error) {
+    console.error("Image compression failed:", error);
+    throw error;
+  }
+}
+
+async function generatePostHTML(post) {
+  const blogDir = path.join(__dirname, "blog");
+  await fs.mkdir(blogDir, { recursive: true });
+
+  const renderedContent = convertMarkdownToHTML(post.content || "");
+  const formattedDate = new Date(post.date).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+  const imageHTML = post.image
+    ? `<p><img src="../${
+        post.image
+      }" style="max-width:100%;margin:1rem 0;" alt="${escapeHTML(
+        post.title
+      )}"></p>`
+    : "";
+
+  const html = `<!DOCTYPE html>
+                <html lang="en">
+                  <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+                    <title>${escapeHTML(post.title)} — Alex Boyko</title>
+                    <link rel="stylesheet" href="../styles.css">
+                    <link rel="icon" href="../favicon.ico">
+                  </head>
+                  <body>
+                    <h1>${escapeHTML(post.title)}</h1>
+                    <p><small>${formattedDate}</p>
+                    <nav><a href="/blog/index.html">Blog</a></nav>
+                    <section>
+                      <h2>-</h2>
+                      ${imageHTML}
+                      <div>${renderedContent}</div>
+                    </section>
+                  </body>
+                </html>`;
+
+  await fs.writeFile(path.join(blogDir, `${post.slug}.html`), html, "utf8");
+}
+
+async function generatePostsJSON() {
+  const postsDir = path.join(__dirname, "posts");
+  const blogDir = path.join(__dirname, "blog");
+
+  const files = await fs.readdir(postsDir);
+  const posts = await Promise.all(
+    files
+      .filter((f) => f.endsWith(".json"))
+      .map(async (file) => {
+        const content = await fs.readFile(path.join(postsDir, file), "utf8");
+        return JSON.parse(content);
+      })
+  );
+
+  posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  await fs.writeFile(
+    path.join(blogDir, "posts.json"),
+    JSON.stringify(posts, null, 2),
+    "utf8"
+  );
+}
 
 // Create directories if they don't exist
 async function ensureDirectories() {
-  await fs.mkdir(path.join(__dirname, 'posts'), { recursive: true });
-  await fs.mkdir(path.join(__dirname, 'images', 'blog'), { recursive: true });
+  await fs.mkdir(path.join(__dirname, "posts"), { recursive: true });
+  await fs.mkdir(path.join(__dirname, "images", "blog"), { recursive: true });
 }
 
-// Get all posts
-app.get('/api/posts', async (req, res) => {
-  try {
-    const postsDir = path.join(__dirname, 'posts');
-    const files = await fs.readdir(postsDir);
-    const posts = await Promise.all(
-      files
-        .filter(f => f.endsWith('.json'))
-        .map(async (file) => {
-          const content = await fs.readFile(path.join(postsDir, file), 'utf8');
-          return JSON.parse(content);
-        })
-    );
-
-    posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-    res.json(posts);
-  } catch (error) {
-    res.json([]);
-  }
-});
-
-// Get single post
-app.get('/api/posts/:id', async (req, res) => {
-  try {
-    const postPath = path.join(__dirname, 'posts', `${req.params.id}.json`);
-    const content = await fs.readFile(postPath, 'utf8');
-    res.json(JSON.parse(content));
-  } catch (error) {
-    res.status(404).json({ error: 'Post not found' });
-  }
-});
+// GET endpoints removed - blog now uses static posts.json and individual HTML files
 
 // Simple auth middleware: requires env var BLOG_PASS to be set
 function requireAuth(req, res, next) {
   const pass = process.env.BLOG_PASS;
-  if (!pass) return res.status(500).json({ error: 'Server not configured' });
-  const auth = req.headers.authorization || '';
-  if (auth !== `Bearer ${pass}`) return res.status(401).json({ error: 'Unauthorized' });
+  if (!pass) return res.status(500).json({ error: "Server not configured" });
+  const auth = req.headers.authorization || "";
+  if (auth !== `Bearer ${pass}`)
+    return res.status(401).json({ error: "Unauthorized" });
   next();
 }
 
 // Create new post
-app.post('/api/posts', requireAuth, upload.single('image'), async (req, res) => {
-  try {
-    const { title, content } = req.body || {};
-    const id = Date.now().toString();
+app.post(
+  "/api/posts",
+  requireAuth,
+  upload.single("image"),
+  async (req, res) => {
+    try {
+      const { title, content } = req.body || {};
+      const id = Date.now().toString();
 
-    const imagePath = req.file ? path.posix.join('images', 'blog', req.file.filename) : null;
+      // Generate slug from title
+      const slug = generateSlug(title || `post-${id}`);
 
-    const post = {
-      id,
-      title: title || '',
-      content: content || '',
-      image: imagePath,
-      date: new Date().toISOString(),
-    };
+      let imagePath = null;
 
-    const postsDir = path.join(__dirname, 'posts');
-    await fs.writeFile(
-      path.join(postsDir, `${id}.json`),
-      JSON.stringify(post, null, 2)
-    );
+      if (req.file) {
+        // Compress uploaded image
+        const originalPath = req.file.path;
+        const compressedFilename = `compressed-${req.file.filename}`;
+        const compressedPath = path.join(
+          __dirname,
+          "images",
+          "blog",
+          compressedFilename
+        );
 
-    res.json(post);
-  } catch (error) {
-    res.status(500).json({ error: 'Failed to create post' });
+        try {
+          await compressImage(originalPath, compressedPath);
+          // Delete original uncompressed file
+          await fs.unlink(originalPath);
+          imagePath = path.posix.join("images", "blog", compressedFilename);
+        } catch (compressionError) {
+          // Fallback to original if compression fails
+          console.warn(
+            "Image compression failed, using original:",
+            compressionError
+          );
+          imagePath = path.posix.join("images", "blog", req.file.filename);
+        }
+      }
+
+      const post = {
+        id,
+        slug,
+        title: title || "",
+        content: content || "",
+        image: imagePath,
+        date: new Date().toISOString(),
+      };
+
+      const postsDir = path.join(__dirname, "posts");
+      await fs.writeFile(
+        path.join(postsDir, `${id}.json`),
+        JSON.stringify(post, null, 2)
+      );
+
+      // Generate HTML file
+      await generatePostHTML(post);
+
+      // Regenerate posts.json for static blog listing
+      await generatePostsJSON();
+
+      res.json(post);
+    } catch (error) {
+      console.error("Post creation error:", error);
+      res.status(500).json({ error: "Failed to create post" });
+    }
   }
-});
+);
 
 // Delete post
-app.delete('/api/posts/:id', requireAuth, async (req, res) => {
+app.delete("/api/posts/:id", requireAuth, async (req, res) => {
   try {
-    const postsDir = path.join(__dirname, 'posts');
+    const postsDir = path.join(__dirname, "posts");
     const postPath = path.join(postsDir, `${req.params.id}.json`);
-    const content = await fs.readFile(postPath, 'utf8');
+    const content = await fs.readFile(postPath, "utf8");
     const post = JSON.parse(content);
 
+    // Delete image if exists
     if (post.image) {
       try {
-        const imagesBase = path.resolve(__dirname, 'images', 'blog');
-        const candidate = post.image.startsWith('/') ? path.resolve(__dirname, '.' + post.image) : path.resolve(__dirname, post.image);
+        const imagesBase = path.resolve(__dirname, "images", "blog");
+        const candidate = post.image.startsWith("/")
+          ? path.resolve(__dirname, "." + post.image)
+          : path.resolve(__dirname, post.image);
         if (candidate.startsWith(imagesBase)) {
           await fs.unlink(candidate);
         }
-      } catch (e) {}
+      } catch (e) {
+        console.warn("Failed to delete image:", e);
+      }
     }
 
+    // Delete HTML file
+    if (post.slug) {
+      try {
+        const htmlPath = path.join(__dirname, "blog", `${post.slug}.html`);
+        await fs.unlink(htmlPath);
+        console.log(`Deleted HTML file: ${post.slug}.html`);
+      } catch (e) {
+        console.warn("Failed to delete HTML file:", e);
+      }
+    }
+
+    // Delete JSON source
     await fs.unlink(postPath);
+
+    // Regenerate posts.json for static blog listing
+    await generatePostsJSON();
+
     res.json({ success: true });
   } catch (error) {
-    res.status(500).json({ error: 'Failed to delete post' });
+    console.error("Delete error:", error);
+    res.status(500).json({ error: "Failed to delete post" });
   }
 });
 

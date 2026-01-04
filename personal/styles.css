@@ -20,26 +20,26 @@ body {
 }
 
 h1 {
-  font-size: 12px;
+  font-size: .875rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
 }
 
 h2 {
-  font-size: 12px;
+  font-size: .875rem;
   font-weight: 500;
   margin: 0.75rem 0 0.75rem;
 }
 
 h3 {
-  font-size: 12px;
+  font-size: .875rem;
   font-weight: 700;
   margin: 1rem 0 0.25rem;
 }
 
 p {
   margin: 0.25rem 0;
-  font-size: 12px;
+  font-size: .875rem;
 }
 
 a {
@@ -76,7 +76,7 @@ article ol {
 
 article li {
   margin: 0.25rem 0;
-  font-size: 12px;
+  font-size: .875rem;
 }
 
 article ul.task-list {
@@ -89,7 +89,7 @@ article ul.task-list li {
 }
 
 small {
-  font-size: 12px;
+  font-size: .875rem;
 }
 
 section {
@@ -103,15 +103,18 @@ nav {
   align-items: center;
   justify-items: center;
   gap: 0.2rem;
-  font-size: 12px;
+  font-size: .875rem;
 }
 
 /* Admin styles */
 #admin {
   background: white;
   padding: 1rem;
-  border: 1px solid #eee;
-  margin-top: 1.5rem;
+  border: 1px solid #ddd;
+  margin-top: 2rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Hidden admin trigger for mobile - large tap target but visually minimal */
@@ -136,14 +139,22 @@ nav {
 
   /* Minimal editor styling for contenteditable */
   .editor {
-    padding: 0;
+    padding: 0.5rem;
     margin: 0;
-    min-height: 180px;
+    min-height: 200px;
+    width: 100%;
     border: 1px solid #ddd;
     background: #fff;
     font-family: inherit;
     overflow-wrap: anywhere;
+    font-size: 10px;
   }
+
+  /* Hide browser autocomplete/suggestions in editor */
+  .editor::-webkit-input-placeholder { color: #999; }
+  .editor:-moz-placeholder { color: #999; }
+  .editor::-moz-placeholder { color: #999; }
+  .editor:-ms-input-placeholder { color: #999; }
 
 @media (max-width: 640px) {
   body {
@@ -151,6 +162,16 @@ nav {
   }
 
   h1 {
-    font-size: 12px;
+    font-size: .875rem;
+  }
+
+  .editor {
+    font-size: 9px;
+    min-height: 180px;
+  }
+
+  #admin {
+    width: 100%;
+    padding: 0.75rem;
   }
 }

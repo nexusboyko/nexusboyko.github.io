@@ -98,13 +98,12 @@ async function displayPosts() {
   const container = document.getElementById('posts');
 
   if (posts.length === 0) {
-    container.innerHTML = '<li style="color:#999;font-size:12px;">No posts yet.</li>';
     return;
   }
 
   container.innerHTML = posts.map(post => {
     const slug = post.slug || `post-${post.id}`;
-    return `<li style="font-size:12px;"><a href="/blog/${slug}.html">${esc(post.title)}</a></li>`;
+    return `<li style="font-size:12px;"><a href="${slug}.html">${esc(post.title)}</a></li>`;
   }).join('');
 }
 

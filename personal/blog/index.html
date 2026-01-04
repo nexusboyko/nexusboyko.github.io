@@ -4,17 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Blog — Alex Boyko</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" href="../favicon.ico">
 </head>
 <body>
-  <nav><a href="../index.html">← Home</a></nav>
+  <h1 id="site-header">Blog</h1>
+  <p>Thoughts on things worth sharing :P</p>
 
-  <header id="site-header">
-    <h1>Blog</h1>
-  </header>
+  <nav>
+    <a href="../index.html">Home</a>
+  </nav>
 
-  <div id="posts"></div>
+  <section>
+    <h2>-</h2>
+    <ol id="posts"></ol>
+  </section>
 
   <!-- Admin panel (Ctrl+Shift+B) -->
   <div id="admin" style="display:none;">
@@ -22,7 +26,7 @@
     <form id="post-form">
       <p><input type="text" id="title" placeholder="Title" required style="width:100%;padding:0.5rem;border:1px solid #ddd;font-family:inherit;"></p>
 
-      <div id="editor" class="editor" aria-label="Post content editor" placeholder="Write your post…"></div>
+      <div id="editor" class="editor" aria-label="Post content editor" placeholder="Write your post…" spellcheck="false" autocomplete="off"></div>
       <textarea id="content" name="content" style="display:none"></textarea>
 
       <p><input type="file" id="image" accept="image/*"></p>
@@ -30,9 +34,6 @@
       <button type="button" id="cancel" style="padding:0.5rem 1rem;background:#999;color:white;border:none;cursor:pointer;margin-left:0.5rem;">Cancel</button>
     </form>
   </div>
-
-  <!-- Hidden admin trigger for mobile (tap this area) -->
-  <button id="admin-trigger" aria-hidden="true"></button>
 
   <!-- Load OverType from local node_modules when available, otherwise fallback to CDN -->
   <script type="module">
