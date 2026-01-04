@@ -260,11 +260,11 @@ async function updateBlogIndex() {
   const postsHTML = posts
     .map(
       (post) =>
-        `<li style="font-size:12px;display:flex;"><a href="${
+        `<li style="font-size:12px;display:flex;"><a href="/blog/${
           post.id
         }.html">${escapeHTML(post.title)}</a>&nbsp;<span onclick="deletePost('${
           post.id
-        }')" style="cursor:pointer;color: red;">(del)</span></li>`
+        }')" id="admin-del" style="display:none;cursor:pointer;color: red;">(del)</span></li>`
     )
     .join("\n      ");
 

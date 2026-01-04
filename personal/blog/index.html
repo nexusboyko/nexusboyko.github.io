@@ -17,13 +17,11 @@
 
     <section>
       <h2>-</h2>
-      <ol id="posts">
-    </ol>
+      <ol id="posts"></ol>
     </section>
 
     <!-- Admin panel (Ctrl+Shift+B) -->
     <div id="admin" style="display: none">
-      <h2>New Post</h2>
       <form id="post-form">
         <p>
           <input
@@ -34,8 +32,9 @@
             style="
               width: 100%;
               padding: 0.5rem;
-              border: 1px solid #ddd;
               font-family: inherit;
+              overflow: hidden;
+              border: none;
             "
           />
         </p>
@@ -51,29 +50,14 @@
         <textarea id="content" name="content" style="display: none"></textarea>
 
         <p><input type="file" id="image" accept="image/*" /></p>
-        <button
-          type="submit"
-          style="
-            padding: 0.5rem 1rem;
-            background: #4a90e2;
-            color: white;
-            border: none;
-            cursor: pointer;
-          "
-        >
+        <button type="submit" style="margin-top: 1rem; cursor: pointer">
           Publish
         </button>
         <button
           type="button"
           id="cancel"
-          style="
-            padding: 0.5rem 1rem;
-            background: #999;
-            color: white;
-            border: none;
-            cursor: pointer;
-            margin-left: 0.5rem;
-          "
+          style="cursor: pointer; margin-left: 1rem"
+          hidden
         >
           Cancel
         </button>
@@ -121,6 +105,6 @@
       })();
     </script>
 
-    <script src="blog-client.js"></script>
+    <script src="/blog/blog-client.js"></script>
   </body>
 </html>
