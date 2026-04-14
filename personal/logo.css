@@ -122,6 +122,26 @@
     opacity: 0;
   }
 }
+
+/* Physics Mode Styles */
+.logo-box.physics-active .circle,
+.logo-box.physics-active .square,
+.logo-box.physics-active .triangle {
+    opacity: 0 !important;
+    pointer-events: none;
+    animation: none !important;
+}
+
+#physics-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Behind the page content */
+    pointer-events: none;
+}
+
 .pfp {
   position: absolute;
   width: 0;

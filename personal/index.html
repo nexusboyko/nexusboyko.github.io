@@ -8,7 +8,9 @@
     <link rel="icon" href="favicon.ico" />
   </head>
   <body>
-    <div style="display:flex;justify-content: space-between;align-items: end;">
+    <div
+      style="display: flex; justify-content: space-between; align-items: end"
+    >
       <div>
         <h1>Alex Boyko</h1>
         <p>Too busy working on cool stuff :)</p>
@@ -22,14 +24,13 @@
           <a href="https://github.com/nexusboyko">GitHub</a>
         </nav>
       </div>
-          <h1>
-    <div class="logo-box">
-      <div class="circle"></div>
-      <div class="square"></div>
-      <div class="triangle"></div>
-    </div>
-    </h1>
-
+      <h1>
+        <div class="logo-box">
+          <div class="circle"></div>
+          <div class="square"></div>
+          <div class="triangle"></div>
+        </div>
+      </h1>
     </div>
 
     <section>
@@ -60,7 +61,7 @@
       <h3>University of California, Davis (Transferred)</h3>
       <p>Computer Science, B.S. · 2021-2023</p>
     </section>
-    
+
     <section>
       <h2>-</h2>
       <p>
@@ -81,5 +82,37 @@
       </p>
       <p><a href="#">3place</a> — Real-time chatrooms with WebSockets</p>
     </section>
+
+    <footer
+      style="
+        position: absolute;
+        bottom: 1rem;
+        width: 100vw;
+        left: 0;
+      "
+    >
+      <section
+        style="
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 0.5rem;
+        "
+      >
+        <small style="font-size: small; color: #999">Made by me.</small>
+        <img
+          src="/images/profile1.jpg"
+          alt="profile"
+          style="width: 60px; border-radius: 50%"
+        />
+      </section>
+    </footer>
+
+    <!-- Matter.js Physics Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.20.0/matter.min.js"></script>
+    <!-- Logo Physics Script -->
+    <script src="logo-physics.js"></script>
   </body>
 </html>
