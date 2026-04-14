@@ -6,7 +6,7 @@
 @font-face {
   font-family: "Helvetica Neue";
   font-weight: 700;
-  src: url("./helvetica-neue-master/HelveticaNeue-Bold.otf");
+  src: url("./fonts/helvetica/HelveticaNeue-Bold.otf");
 }
 
 /** Bold Italic */
@@ -14,14 +14,14 @@
   font-family: "Helvetica Neue";
   font-weight: 700;
   font-style: italic;
-  src: url("./helvetica-neue-master/HelveticaNeue-BoldItalic.otf");
+  src: url("./fonts/helvetica/HelveticaNeue-BoldItalic.otf");
 }
 
 /** Light */
 @font-face {
   font-family: "Helvetica Neue";
   font-weight: 200;
-  src: url("./helvetica-neue-master/HelveticaNeue-Light.otf");
+  src: url("./fonts/helvetica/HelveticaNeue-Light.otf");
 }
 
 /** Light Italic */
@@ -29,14 +29,14 @@
   font-family: "Helvetica Neue";
   font-weight: 200;
   font-style: italic;
-  src: url("./helvetica-neue-master/HelveticaNeue-LightItalic.otf");
+  src: url("./fonts/helvetica/HelveticaNeue-LightItalic.otf");
 }
 
 /** Medium */
 @font-face {
   font-family: "Helvetica Neue";
   font-weight: 500;
-  src: url("./helvetica-neue-master/HelveticaNeue-Medium.otf");
+  src: url("./fonts/helvetica/HelveticaNeue-Medium.otf");
 }
 
 /** Medium Italic */
@@ -44,14 +44,14 @@
   font-family: "Helvetica Neue";
   font-weight: 500;
   font-style: italic;
-  src: url("./helvetica-neue-master/HelveticaNeue-MediumItalic.otf");
+  src: url("./fonts/helvetica/HelveticaNeue-MediumItalic.otf");
 }
 
 /** Regular */
 @font-face {
   font-family: "Helvetica Neue";
   font-weight: 400;
-  src: url("./helvetica-neue-master/HelveticaNeue-Regular.otf");
+  src: url("./fonts/helvetica/HelveticaNeue-Regular.otf");
 }
 
 /** Regular Italic */
@@ -59,14 +59,14 @@
   font-family: "Helvetica Neue";
   font-weight: 400;
   font-style: italic;
-  src: url("./helvetica-neue-master/HelveticaNeue-RegularItalic.otf");
+  src: url("./fonts/helvetica/HelveticaNeue-RegularItalic.otf");
 }
 
 /** Semibold */
 @font-face {
   font-family: "Helvetica Neue";
   font-weight: 600;
-  src: url("./helvetica-neue-master/HelveticaNeue-Semibold.otf");
+  src: url("./fonts/helvetica/HelveticaNeue-Semibold.otf");
 }
 
 /** Semibold Italic */
@@ -74,19 +74,19 @@
   font-family: "Helvetica Neue";
   font-weight: 600;
   font-style: italic;
-  src: url("./helvetica-neue-master/HelveticaNeue-SemiboldItalic.otf");
+  src: url("./fonts/helvetica/HelveticaNeue-SemiboldItalic.otf");
 }
 
 /** Thin */
 @font-face {
   font-family: "Helvetica Neue";
   font-weight: 100;
-  src: url("./helvetica-neue-master/HelveticaNeue-Thin.otf");
+  src: url("./fonts/helvetica/HelveticaNeue-Thin.otf");
 }
 
 /** Ultra Light */
 @font-face {
   font-family: "Helvetica Neue";
   font-weight: 800;
-  src: url("./helvetica-neue-master/HelveticaNeue-Ultralight.otf");
+  src: url("./fonts/helvetica/HelveticaNeue-Ultralight.otf");
 }
